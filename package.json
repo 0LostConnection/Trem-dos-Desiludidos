@@ -1,0 +1,21 @@
+{
+  "name": "robson-bot",
+  "version": "1.1.1",
+  "description": "Discord Bot",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0LostConnection/Robson-Bot.git"
+  },
+  "author": "Geovane Saraiva da Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0LostConnection/Robson-Bot/issues"
+  },
+  "homepage": "https://github.com/0LostConnection/Robson-Bot#readme",
+  "dependencies": {
+    "discord.js": "^14.9.0",
+    "dotenv": "^16.0.3",
+    "mongoose": "^7.0.3"
+  }
+}
