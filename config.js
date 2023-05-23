@@ -4,6 +4,10 @@ module.exports = {
     // Bot
     version: require('./package.json').version,
 
+    // TDD
+    productsTypes: ['produtos:desiludidos', 'produtos:correio'],
+    ticketsChannelId: '1110666022215761940',
+
     statusArray: [
         {
             type: 3,
