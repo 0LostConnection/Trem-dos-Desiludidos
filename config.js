@@ -72,7 +72,8 @@ module.exports = {
             LimeGreen: 2461555, // #258F73
             Orange: 15635286, // #ee9356
             Emerald: 5294200, // #50C878
-            Booster: 16023551 // #f47fff
+            Booster: 16023551, // #f47fff
+            Love: 15895712 // #F28CA0
         }
     },
 }

@@ -1,17 +1,7 @@
 const Command = require('../../infra/structures/CommandStructure')
-const { PermissionFlagsBits, ComponentType, TextInputBuilder, TextInputStyle, ModalBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require('discord.js')
-
-const { StringSelectMenuBuilder, StringSelectMenuOptionBuilder, SlashCommandBuilder } = require('discord.js');
-
-
-
-const createOption = ({ label, description, value, emoji }) => {
-    return new StringSelectMenuOptionBuilder()
-        .setLabel(label)
-        .setDescription(description)
-        .setValue(value)
-        .setEmoji(emoji)
-}
+const createSelectMenuOptions = require('../../infra/utils/selectMenuOptions')
+const { Colors } = require('../../../config')
+const { PermissionFlagsBits, ActionRowBuilder, EmbedBuilder, } = require('discord.js')
 
 module.exports = class extends Command {
     constructor(client) {
@@ -27,13 +17,24 @@ module.exports = class extends Command {
     run = (interaction) => {
         interaction.reply({ content: 'Ok!', ephemeral: true })
 
-        const desiludidoSelectMenu = new StringSelectMenuBuilder()
-            .setCustomId('produtos:desiludidos')
-            .setPlaceholder('Selecione um produto')
-            .addOptions(
-                createOption({ label: 'Piruluto', value: 'pirulito', }),
+        const selectMenuOptions = new createSelectMenuOptions()
 
-            )
+        // Desiludidos
+        const desiludidosRow = new ActionRowBuilder()
+            .addComponents(selectMenuOptions.desiludidosSelectMenu)
+        const desiludidosEmbed = new EmbedBuilder()
+            .setImage('https://i.imgur.com/cJgr8ci.png')
+            .setColor(Colors.dark.Purple)
+
+        // Correio Elegante
+        const correioRow = new ActionRowBuilder()
+            .addComponents(selectMenuOptions.correioSelectMenu)
+        const correioEmbed = new EmbedBuilder()
+            .setImage('https://i.imgur.com/VRtGv6S.png')
+            .setColor(Colors.custom.Love)
+
+        interaction.channel.send({ embeds: [desiludidosEmbed], components: [desiludidosRow] })
+        interaction.channel.send({ embeds: [correioEmbed], components: [correioRow] })
 
     }
 }

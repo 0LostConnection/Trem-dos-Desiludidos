@@ -1,0 +1,174 @@
+[
+    {
+        "type": 0,
+        "name": "Desiludidos",
+        "products": [
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Pirulito",
+                "id": "pirulito",
+                "price": {
+                    "money": "R$0,75",
+                    "pix": "R$0,50"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bombom",
+                "id": "bombom",
+                "price": {
+                    "money": "R$2,50",
+                    "pix": "R$2,00"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bombom + Pirulito",
+                "id": "bombom+pirulito",
+                "price": {
+                    "money": "R$3,00",
+                    "pix": "R$2,50"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bombom + Fini",
+                "id": "bombom+fini",
+                "price": {
+                    "money": "R$4,50",
+                    "pix": "R$4,50"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Brigadeiro",
+                "id": "brigadeiro",
+                "price": {
+                    "money": "R$3,00",
+                    "pix": "R$3,00"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Brigadeiro + Pirulito",
+                "id": "brigadeiro+pirulito",
+                "price": {
+                    "money": "R$3,00",
+                    "pix": "R$3,00"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Brigadeiro + Fini",
+                "id": "brigadeiro+fini",
+                "price": {
+                    "money": "R$4,50",
+                    "pix": "R$4,50"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "2 Brigadeiros",
+                "id": "2+brigadeiros",
+                "price": {
+                    "money": "R$5,00",
+                    "pix": "R$5,00"
+                }
+            }
+        ]
+    },
+    {
+        "type": 1,
+        "name": "Correio Elegante",
+        "products": [
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Mensagem Direct",
+                "id": "direct",
+                "price": {
+                    "money": "R$0,25",
+                    "pix": "R$0,25"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bilhete",
+                "id": "bilhete",
+                "price": {
+                    "money": "R$1,00",
+                    "pix": "R$0,75"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bilhete + Pirulito",
+                "id": "bilhete+pirulito",
+                "price": {
+                    "money": "R$1,50",
+                    "pix": "R$1,50"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bilhete + Bombom",
+                "id": "bilhete+bombom",
+                "price": {
+                    "money": "R$3,00",
+                    "pix": "R$3,00"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bilhete + Bombom + Pirulito",
+                "id": "bilhete+bombom+pirulito",
+                "price": {
+                    "money": "R$3,75",
+                    "pix": "R$3,50"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bilhete + Brigadeiro",
+                "id": "bilhete+brigadeiro",
+                "price": {
+                    "money": "R$3,50",
+                    "pix": "R$3,00"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bilhete + Brigadeiro + Pirulito",
+                "id": "bilhete+brigadeiro+pirulito",
+                "price": {
+                    "money": "R$4,0",
+                    "pix": "R$4,00"
+                }
+            },
+            {
+                "name": "A DECIDIR",
+                "emoji": "🍭",
+                "description": "Bilhete + Brigadeiro + Fini",
+                "id": "bilhete+brigadeiro+fini",
+                "price": {
+                    "money": "R$5,50",
+                    "pix": "R$5,00"
+                }
+            }
+        ]
+    }
+]
