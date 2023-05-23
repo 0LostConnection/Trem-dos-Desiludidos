@@ -1,6 +1,6 @@
 {
-  "name": "robson-bot",
-  "version": "1.1.1",
+  "name": "tdd",
+  "version": "1.0.1",
   "description": "Discord Bot",
   "main": "index.js",
   "repository": {
@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/0LostConnection/Robson-Bot#readme",
   "dependencies": {
-    "discord.js": "^14.9.0",
+    "discord.js": "^14.11.0",
     "dotenv": "^16.0.3",
     "mongoose": "^7.0.3"
   }

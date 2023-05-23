@@ -7,6 +7,7 @@ module.exports = {
     // TDD
     productsTypes: ['produtos:desiludidos', 'produtos:correio'],
     ticketsChannelId: '1110666022215761940',
+    backupChannelId: '1110693082237763714',
 
     statusArray: [
         {

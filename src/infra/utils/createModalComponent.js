@@ -1,6 +1,6 @@
 const { ActionRowBuilder, TextInputBuilder, TextInputStyle } = require("discord.js")
 
-module.exports = ({ customId, label, style, maxLength, minLength, placeholder, value, required }) => {
+module.exports = ({ customId, label, style, placeholder, value, required }) => {
     const input = new TextInputBuilder()
         .setCustomId(customId)
         .setStyle(style || TextInputStyle.Short)

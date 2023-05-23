@@ -11,10 +11,10 @@ module.exports = class extends eventStructure {
 
     run = async (interaction) => {
         if (!interaction.isStringSelectMenu()) return
-        if(!interaction.client.config.productsTypes.includes(interaction.customId)) return
+        if (!interaction.client.config.productsTypes.includes(interaction.customId)) return
 
         const ticketVenda = new ModalBuilder()
-            .setCustomId('ticket:venda')
+            .setCustomId(interaction.values[0])
             .setTitle('Ticket de Registro de Venda')
 
         ticketVenda.addComponents(
@@ -46,5 +46,7 @@ module.exports = class extends eventStructure {
         )
 
         interaction.showModal(ticketVenda)
+        /* interaction.update({ components: interaction.components })
+        interaction.showModal(ticketVenda) */
     }
 }
