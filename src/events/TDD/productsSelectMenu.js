@@ -13,11 +13,11 @@ module.exports = class extends eventStructure {
         if (!interaction.isStringSelectMenu()) return
         if (!interaction.client.config.productsTypes.includes(interaction.customId)) return
 
-        const ticketVenda = new ModalBuilder()
+        const ticketVendaCorreio = new ModalBuilder()
             .setCustomId(interaction.values[0])
             .setTitle('Ticket de Registro de Venda')
 
-        ticketVenda.addComponents(
+        ticketVendaCorreio.addComponents(
             createModalComponent({
                 customId: 'comprador',
                 required: true,
@@ -45,7 +45,31 @@ module.exports = class extends eventStructure {
             })
         )
 
-        interaction.showModal(ticketVenda)
+        const ticketVendaDesiludido = new ModalBuilder()
+            .setCustomId(interaction.values[0])
+            .setTitle('Ticket de Registro de Venda')
+
+        ticketVendaDesiludido.addComponents(
+            createModalComponent({
+                customId: 'comprador',
+                required: true,
+                label: 'Comprador'
+            }),
+            createModalComponent({
+                customId: 'comprador:serie',
+                required: true,
+                label: 'Série do Comprador'
+            })
+        )
+        switch (interaction.customId) {
+            case 'produtos:correio':
+                interaction.showModal(ticketVendaCorreio)
+                break
+            case 'produtos:desiludidos':
+                interaction.showModal(ticketVendaDesiludido)
+                break
+        }
+
         /* interaction.update({ components: interaction.components })
         interaction.showModal(ticketVenda) */
     }

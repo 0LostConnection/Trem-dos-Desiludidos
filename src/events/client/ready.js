@@ -11,7 +11,7 @@ module.exports = class extends eventStructure {
         console.log(`
 Status          Online
 Name            ${this.client.user.tag}
-Guilds      ${this.client.guilds.cache.size}
+Guilds          ${this.client.guilds.cache.size}
         `)
         this.client.deployCommands()
 

@@ -17,26 +17,31 @@ const productsDictionary = {
     "bilhete+brigadeiro+fini": "Bilhete + Brigadeiro + Fini"
 }
 
-const productsArray = [
-    'pirulito',
-    'bombom',
-    'bombom+pirulito',
-    'bombom+fini',
-    'brigadeiro',
-    'brigadeiro+pirulito',
-    'brigadeiro+fini',
-    '2+brigadeiros',
-    'direct',
-    'bilhete',
-    'bilhete+pirulito',
-    'bilhete+bombom',
-    'bilhete+bombom+pirulito',
-    'bilhete+brigadeiro',
-    'bilhete+brigadeiro+pirulito',
-    'bilhete+brigadeiro+fini'
-]
+const productsArray = {
+    desiludidos: [
+        'pirulito',
+        'bombom',
+        'bombom+pirulito',
+        'bombom+fini',
+        'brigadeiro',
+        'brigadeiro+pirulito',
+        'brigadeiro+fini',
+        '2+brigadeiros',
+    ],
+    correio: [
+        'direct',
+        'bilhete',
+        'bilhete+pirulito',
+        'bilhete+bombom',
+        'bilhete+bombom+pirulito',
+        'bilhete+brigadeiro',
+        'bilhete+brigadeiro+pirulito',
+        'bilhete+brigadeiro+fini'
+    ]
+}
 
 const eventStructure = require(`../../infra/structures/EventStructure`)
+const VendedorDB = require('../../infra/utils/VendedorDB')
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 const { Colors, ticketsChannelId, backupChannelId } = require('../../../config')
 
@@ -48,6 +53,17 @@ const deleteButton = new ActionRowBuilder()
             .setLabel('Cancelar esse ticket!')
     )
 
+const sendTicket = ({ fields, footer, ticketsChannel, backupChannel }) => {
+    const ticketEmbed = new EmbedBuilder()
+        .setColor(Colors.dark.Blue)
+        .setTitle('Ticket de Registro de Venda')
+        .setFields(fields)
+        .setFooter({ text: footer })
+
+    ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
+    backupChannel.send({ embeds: [ticketEmbed] })
+}
+
 module.exports = class extends eventStructure {
     constructor(client) {
         super(client, {
@@ -57,47 +73,83 @@ module.exports = class extends eventStructure {
 
     run = async (interaction) => {
         if (!interaction.isModalSubmit()) return
-        if (!productsArray.includes(interaction.customId)) return
 
         const backupChannel = interaction.guild.channels.cache.get(backupChannelId)
         const ticketsChannel = interaction.guild.channels.cache.get(ticketsChannelId)
-        const ticketEmbed = new EmbedBuilder()
-            .setColor(Colors.dark.Blue)
-            .setTitle('Ticket de Registro de Venda')
-            .setFields(
-                {
-                    "name": "Vendedor",
-                    "value": interaction.user.username
-                },
-                {
-                    "name": "Comprador",
-                    "value": interaction.fields.getTextInputValue('comprador'),
-                    "inline": true
-                },
-                {
-                    "name": "Série do Comprador",
-                    "value": interaction.fields.getTextInputValue('comprador:serie'),
-                    "inline": true
-                },
-                {
-                    "name": "Produto",
-                    "value": productsDictionary[interaction.customId]
-                },
-                {
-                    "name": "Destinatário",
-                    "value": interaction.fields.getTextInputValue('destinatario'),
-                    "inline": true
-                },
-                {
-                    "name": "Série do Destinatário",
-                    "value": interaction.fields.getTextInputValue('destinatario:serie'),
-                    "inline": true
-                },
-            )
-        if (interaction.fields.getTextInputValue('mensagem')) ticketEmbed.setDescription(`**Mensagem**\n${interaction.fields.getTextInputValue('mensagem')}`)
 
-        ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
-        backupChannel.send({ embeds: [ticketEmbed] })
-        interaction.deferUpdate()
+        const Database = new VendedorDB(`${process.cwd()}/sellers.json`)
+        const sellerName = Database.obterVendedor(interaction.user.id)?.name || interaction.user.username
+
+        if (productsArray.desiludidos.includes(interaction.customId)) {
+            sendTicket({
+                ticketsChannel: ticketsChannel,
+                backupChannel: backupChannel,
+                footer: 'Desiludidos',
+                fields: [
+                    {
+                        "name": "Vendedor",
+                        "value": sellerName
+                    },
+                    {
+                        "name": "Comprador",
+                        "value": interaction.fields.getTextInputValue('comprador'),
+                        "inline": true
+                    },
+                    {
+                        "name": "Série do Comprador",
+                        "value": interaction.fields.getTextInputValue('comprador:serie'),
+                        "inline": true
+                    },
+                    {
+                        "name": "Produto",
+                        "value": productsDictionary[interaction.customId]
+                    },
+                ]
+            })
+            interaction.deferUpdate()
+        }
+        if (productsArray.correio.includes(interaction.customId)) {
+            sendTicket({
+                ticketsChannel: ticketsChannel,
+                backupChannel: backupChannel,
+                footer: 'Correio',
+                fields: [
+                    {
+                        "name": "Produto",
+                        "value": interaction.fields.getTextInputValue('mensagem')
+                    },
+                    {
+                        "name": "Vendedor",
+                        "value": sellerName
+                    },
+                    {
+                        "name": "Comprador",
+                        "value": interaction.fields.getTextInputValue('comprador'),
+                        "inline": true
+                    },
+                    {
+                        "name": "Série do Comprador",
+                        "value": interaction.fields.getTextInputValue('comprador:serie'),
+                        "inline": true
+                    },
+                    {
+                        "name": "Produto",
+                        "value": productsDictionary[interaction.customId]
+                    },
+                    {
+                        "name": "Destinatário",
+                        "value": interaction.fields.getTextInputValue('destinatario'),
+                        "inline": true
+                    },
+                    {
+                        "name": "Série do Destinatário",
+                        "value": interaction.fields.getTextInputValue('destinatario:serie'),
+                        "inline": true
+                    },
+                ]
+            })
+            interaction.deferUpdate()
+        }
+        return
     }
 }
