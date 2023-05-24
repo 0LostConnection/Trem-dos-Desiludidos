@@ -4,7 +4,7 @@
         "name": "Desiludidos",
         "products": [
             {
-                "name": "A DECIDIR",
+                "name": "Alegria Doce",
                 "emoji": "🍭",
                 "description": "Pirulito",
                 "id": "pirulito",
@@ -14,8 +14,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Delícia Individual",
+                "emoji": "🍬",
                 "description": "Bombom",
                 "id": "bombom",
                 "price": {
@@ -24,7 +24,7 @@
                 }
             },
             {
-                "name": "A DECIDIR",
+                "name": "Sabores Só Meus",
                 "emoji": "🍭",
                 "description": "Bombom + Pirulito",
                 "id": "bombom+pirulito",
@@ -34,8 +34,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Guloseimas de Autocuidado",
+                "emoji": "🧁",
                 "description": "Bombom + Fini",
                 "id": "bombom+fini",
                 "price": {
@@ -44,8 +44,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Prazer Exclusivo",
+                "emoji": "🍫",
                 "description": "Brigadeiro",
                 "id": "brigadeiro",
                 "price": {
@@ -54,8 +54,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Doce Pessoal",
+                "emoji": "😋",
                 "description": "Brigadeiro + Pirulito",
                 "id": "brigadeiro+pirulito",
                 "price": {
@@ -64,8 +64,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Sabor que Me Completa",
+                "emoji": "🍬",
                 "description": "Brigadeiro + Fini",
                 "id": "brigadeiro+fini",
                 "price": {
@@ -74,8 +74,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Dupla de Felicidade Própria",
+                "emoji": "🍫",
                 "description": "2 Brigadeiros",
                 "id": "2+brigadeiros",
                 "price": {
@@ -90,8 +90,8 @@
         "name": "Correio Elegante",
         "products": [
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Coração Digital",
+                "emoji": "📱",
                 "description": "Mensagem Direct",
                 "id": "direct",
                 "price": {
@@ -100,8 +100,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Coração Escrito",
+                "emoji": "💌",
                 "description": "Bilhete",
                 "id": "bilhete",
                 "price": {
@@ -110,7 +110,7 @@
                 }
             },
             {
-                "name": "A DECIDIR",
+                "name": "Doce Promessa",
                 "emoji": "🍭",
                 "description": "Bilhete + Pirulito",
                 "id": "bilhete+pirulito",
@@ -120,8 +120,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Amor Embalado",
+                "emoji": "😍",
                 "description": "Bilhete + Bombom",
                 "id": "bilhete+bombom",
                 "price": {
@@ -130,8 +130,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Amor Doce Completo",
+                "emoji": "💘",
                 "description": "Bilhete + Bombom + Pirulito",
                 "id": "bilhete+bombom+pirulito",
                 "price": {
@@ -140,8 +140,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Sabor do Amor",
+                "emoji": "😋",
                 "description": "Bilhete + Brigadeiro",
                 "id": "bilhete+brigadeiro",
                 "price": {
@@ -150,8 +150,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Delícia Apaixonada",
+                "emoji": "🍫",
                 "description": "Bilhete + Brigadeiro + Pirulito",
                 "id": "bilhete+brigadeiro+pirulito",
                 "price": {
@@ -160,8 +160,8 @@
                 }
             },
             {
-                "name": "A DECIDIR",
-                "emoji": "🍭",
+                "name": "Doce Encanto",
+                "emoji": "🥰",
                 "description": "Bilhete + Brigadeiro + Fini",
                 "id": "bilhete+brigadeiro+fini",
                 "price": {
