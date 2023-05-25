@@ -33,6 +33,10 @@ module.exports = class VendedorDB {
     return this.data[id]
   }
 
+  obterVendedores() {
+    return this.data
+  }
+
   atualizarNomeVendedor(id, newName) {
     const vendedor = this.data[id];
 

@@ -11,13 +11,13 @@ module.exports = {
 
     statusArray: [
         {
-            type: 3,
-            content: `Robson Bot`,
-            status: 'online'
+            type: 0,
+            content: `Trem dos Desiludidos`,
+            status: 'dnd'
         },
         {
             type: 0,
-            content: `Made By LostConnection#4460`,
+            content: `Espalhe o Amor! 💘`,
             status: 'online'
         }
     ],

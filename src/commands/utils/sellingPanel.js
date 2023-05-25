@@ -6,7 +6,7 @@ const { PermissionFlagsBits, ActionRowBuilder, EmbedBuilder, } = require('discor
 module.exports = class extends Command {
     constructor(client) {
         super(client, {
-            name: 'produtos',
+            name: 'enviar-painel-de-vendas',
             description: 'Envia a mensagem de produtos.',
             disabled: false,
             default_member_permissions: Number(PermissionFlagsBits.ManageGuild),
