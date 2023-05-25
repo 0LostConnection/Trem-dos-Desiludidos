@@ -81,6 +81,12 @@ module.exports = class extends eventStructure {
         const sellerName = Database.obterVendedor(interaction.user.id)?.name || interaction.user.username
 
         if (productsArray.desiludidos.includes(interaction.customId)) {
+            try {
+                interaction.message.edit({ components: interaction.message.components })
+            } catch (error) {
+                throw error
+            }
+
             sendTicket({
                 ticketsChannel: ticketsChannel,
                 backupChannel: backupChannel,
@@ -109,6 +115,12 @@ module.exports = class extends eventStructure {
             interaction.deferUpdate()
         }
         if (productsArray.correio.includes(interaction.customId)) {
+            try {
+                interaction.message.edit({ components: interaction.message.components })
+            } catch (error) {
+                throw error
+            }
+
             sendTicket({
                 ticketsChannel: ticketsChannel,
                 backupChannel: backupChannel,

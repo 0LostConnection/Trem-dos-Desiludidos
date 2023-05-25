@@ -13,7 +13,7 @@ module.exports = {
         {
             type: 0,
             content: `Trem dos Desiludidos`,
-            status: 'dnd'
+            status: 'online'
         },
         {
             type: 0,

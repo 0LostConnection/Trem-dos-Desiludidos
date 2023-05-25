@@ -1,6 +1,6 @@
 {
   "name": "tdd",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Discord Bot",
   "main": "index.js",
   "repository": {
