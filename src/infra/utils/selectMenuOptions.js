@@ -1,4 +1,5 @@
 const { StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require('discord.js')
+const { readFileSync } = require('fs')
 
 module.exports = class createSelectMenuOptions {
     constructor() {
@@ -10,7 +11,7 @@ module.exports = class createSelectMenuOptions {
             .setCustomId('produtos:correio')
             .setPlaceholder('Selecione um produto')
 
-        this.productsJson = require('../../../products.json')
+        this.productsJson = JSON.parse(readFileSync(`${process.cwd()}/products.json`, 'utf-8'))
 
         for (const category of this.productsJson) {
             for (const product of category.products) {
