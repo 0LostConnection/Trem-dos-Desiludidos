@@ -1,53 +1,57 @@
-const fs = require('fs');
+const fs = require('fs')
 
 module.exports = class VendedorDB {
   constructor(filePath) {
-    this.filePath = filePath;
-    this.data = this.carregarDados();
+    this.filePath = filePath
+    this.data = this.carregarDados()
   }
 
   carregarDados() {
     try {
-      const data = fs.readFileSync(this.filePath);
-      return JSON.parse(data);
+      const data = fs.readFileSync(this.filePath)
+      return JSON.parse(data)
     } catch (error) {
       // Se o arquivo não existir ou ocorrer algum erro na leitura, retorna um objeto vazio
-      return {};
+      return {}
     }
   }
 
-  salvarDados() {
-    fs.writeFileSync(this.filePath, JSON.stringify(this.data, null, 4));
+  salvarDados(data) {
+    fs.writeFileSync(this.filePath, JSON.stringify(data, null, 4))
   }
 
   adicionarVendedor(id, name) {
-    const vendedor = {
+    let data = this.carregarDados()
+    data[id] = {
       name: name
-    };
+    }
 
-    this.data[id] = vendedor;
-    this.salvarDados();
+    this.salvarDados(data)
   }
 
   obterVendedor(id) {
-    return this.data[id]
+    let data = this.carregarDados()
+    return data[id]
   }
 
   obterVendedores() {
-    return this.data
+    let data = this.carregarDados()
+    return data
   }
 
   atualizarNomeVendedor(id, newName) {
-    const vendedor = this.data[id];
+    let data = this.carregarDados()
+    const vendedor = data[id]
 
     if (vendedor) {
-      vendedor.name = newName;
-      this.salvarDados();
+      vendedor.name = newName
+      this.salvarDados(data)
     }
   }
 
   excluirVendedor(id) {
-    delete this.data[id];
-    this.salvarDados();
+    let data = this.carregarDados()
+    delete data[id]
+    this.salvarDados(data)
   }
 }
