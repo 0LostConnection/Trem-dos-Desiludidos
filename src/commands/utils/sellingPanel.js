@@ -20,7 +20,7 @@ module.exports = class extends Command {
         // Título
         const tituloEmbed = new EmbedBuilder()
             .setColor(Colors.custom.Love)
-            .setImage('https://i.imgur.com/AyK03tv.png')
+            .setImage('https://i.imgur.com/JRG3xRm.png')
 
         const selectMenuOptions = new CreateSelectMenuOptions()
 
