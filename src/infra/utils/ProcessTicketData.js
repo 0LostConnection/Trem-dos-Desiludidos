@@ -151,7 +151,7 @@ module.exports = class ProcessTicketData {
         }
 
         for (const [sellerId, totalSales] of Object.entries(sellerData)) {
-            sellersArray.push(`<@${sellerId}> - \`${totalSales}\``)
+            sellersArray.push(`${vendedorDB.obterVendedor(sellerId)?.name ? `\`${vendedorDB.obterVendedor(sellerId)?.name}\`` : `<@${sellerId}>`} - \`${totalSales}\``)
         }
 
         return sellersArray
