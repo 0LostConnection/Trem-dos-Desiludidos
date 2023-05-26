@@ -1,4 +1,3 @@
-const { readFileSync } = require('fs')
 const TicketsDB = require('./TicketsDB')
 const ticketsDB = new TicketsDB(`${process.cwd()}/json/tickets.json`)
 const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
