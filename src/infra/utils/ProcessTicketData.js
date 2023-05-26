@@ -154,7 +154,6 @@ module.exports = class ProcessTicketData {
     }
 
     totalDeVendas() {
-        console.log(ticketsDB.obterTickets().length)
         return ticketsDB.obterTickets().length
     }
 }

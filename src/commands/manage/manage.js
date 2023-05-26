@@ -45,11 +45,6 @@ module.exports = class extends Command {
                                     required: true
                                 }
                             ]
-                        },
-                        {
-                            type: 1,
-                            name: 'listar',
-                            description: 'Listar todos os vendedores registrados.'
                         }
                     ]
                 }

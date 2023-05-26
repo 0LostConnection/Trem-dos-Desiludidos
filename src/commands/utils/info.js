@@ -25,6 +25,18 @@ module.exports = class extends Command {
                             description: 'Total de vendas.',
                         }
                     ]
+                },
+                {
+                    type: 2,
+                    name: 'vendedores',
+                    description: 'Informações sobre os vendedores',
+                    options: [
+                        {
+                            type: 1,
+                            name: 'listar',
+                            description: 'Lista todos os vendedores registrados.',
+                        }
+                    ]
                 }
             ]
         })
