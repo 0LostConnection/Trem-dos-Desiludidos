@@ -2,7 +2,7 @@ const { readFileSync } = require('fs')
 
 module.exports = class parseProductJSON {
     constructor(jsonPath) {
-        this.productsJson = Boolean(jsonPath) ? JSON.parse(readFileSync(jsonPath, 'utf-8')) : JSON.parse(readFileSync(`${process.cwd()}/products.json`, 'utf-8'))
+        this.productsJson = Boolean(jsonPath) ? JSON.parse(readFileSync(jsonPath, 'utf-8')) : JSON.parse(readFileSync(`${process.cwd()}/json/products.json`, 'utf-8'))
     }
 
     getDictionary() {

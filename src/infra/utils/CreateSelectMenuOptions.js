@@ -11,7 +11,7 @@ module.exports = class createSelectMenuOptions {
             .setCustomId('produtos:correio')
             .setPlaceholder('Selecione um produto')
 
-        this.productsJson = JSON.parse(readFileSync(`${process.cwd()}/products.json`, 'utf-8'))
+        this.productsJson = JSON.parse(readFileSync(`${process.cwd()}/json/products.json`, 'utf-8'))
 
         for (const category of this.productsJson) {
             for (const product of category.products) {

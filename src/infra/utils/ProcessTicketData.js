@@ -1,9 +1,9 @@
 const TicketsDB = require('./TicketsDB')
-const ticketsDB = new TicketsDB(`${process.cwd()}/tickets.json`)
+const ticketsDB = new TicketsDB(`${process.cwd()}/json/tickets.json`)
 const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
 const productsDictionary = new ParseProductJSON().getDictionary()
 const VendedorDB = require('../../infra/utils/VendedorDB')
-const vendedorDB = new VendedorDB(`${process.cwd()}/sellers.json`)
+const vendedorDB = new VendedorDB(`${process.cwd()}/json/tickets.json`)
 
 module.exports = class ProcessTicketData {
     registerTicket(interaction, ticketType) {
