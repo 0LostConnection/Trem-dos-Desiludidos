@@ -54,38 +54,40 @@ module.exports = class ProcessTicketData {
                     .setLabel('Cancelar esse ticket!')
             )
 
-        let ticketEmbed = {}
+        let ticketEmbed = []
         switch (ticketType) {
             case 0:
                 const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
                 for (const product of productsArray) {
-                    ticketEmbed = new EmbedBuilder()
-                        .setColor(Colors.dark.Purple)
-                        .setTitle('Ticket de Registro de Venda')
-                        .setFields([
-                            {
-                                "name": "Vendedor",
-                                "value": `\`${vendedorDB.obterVendedor(interaction.user.id)?.name || interaction.user.username}\``
-                            },
-                            {
-                                "name": "Comprador",
-                                "value": `\`${interaction.fields.getTextInputValue('comprador')}\``,
-                                "inline": true
-                            },
-                            {
-                                "name": "Série do Comprador",
-                                "value": `\`${interaction.fields.getTextInputValue('comprador:serie')}\``,
-                                "inline": true
-                            },
-                            {
-                                "name": "Produto",
-                                "value": `\`${productsDictionary[product]}\``
-                            },
-                        ])
-                        .setFooter({ text: 'Desiludidos' })
+                    ticketEmbed.push(
+                        new EmbedBuilder()
+                            .setColor(Colors.dark.Purple)
+                            .setTitle('Ticket de Registro de Venda')
+                            .setFields([
+                                {
+                                    "name": "Vendedor",
+                                    "value": `\`${vendedorDB.obterVendedor(interaction.user.id)?.name || interaction.user.username}\``
+                                },
+                                {
+                                    "name": "Comprador",
+                                    "value": `\`${interaction.fields.getTextInputValue('comprador')}\``,
+                                    "inline": true
+                                },
+                                {
+                                    "name": "Série do Comprador",
+                                    "value": `\`${interaction.fields.getTextInputValue('comprador:serie')}\``,
+                                    "inline": true
+                                },
+                                {
+                                    "name": "Produto",
+                                    "value": `\`${productsDictionary[product]}\``
+                                },
+                            ])
+                            .setFooter({ text: 'Desiludidos' })
+                    )
 
-                    ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
-                    //backupChannel.send({ embeds: [ticketEmbed] })
+                    ticketsChannel.send({ embeds: ticketEmbed, components: [deleteButton] })
+                    backupChannel.send({ embeds: ticketEmbed })
                 }
                 break
 
@@ -133,8 +135,6 @@ module.exports = class ProcessTicketData {
                 backupChannel.send({ embeds: [ticketEmbed] })
                 break
         }
-
-
     }
 
     vendasPorVendedor() {
