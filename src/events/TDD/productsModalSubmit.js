@@ -1,9 +1,7 @@
 const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
 const productsArray = new ParseProductJSON().getIdsArray()
-
 const ProcessTicketData = require('../../infra/utils/ProcessTicketData')
 const { sendTicket, registerTicket } = new ProcessTicketData()
-
 const eventStructure = require(`../../infra/structures/EventStructure`)
 const { ticketsChannelId, backupChannelId } = require('../../../config')
 

@@ -26,6 +26,7 @@ module.exports = class VendedorDB {
     }
 
     obterTickets() {
-        return this.data
+        let data = this.carregarDados()
+        return data
     }
 }
