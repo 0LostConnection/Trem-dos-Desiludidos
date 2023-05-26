@@ -17,6 +17,11 @@ module.exports = class extends Command {
     run = (interaction) => {
         interaction.reply({ content: 'Ok!', ephemeral: true })
 
+        // Título
+        const tituloEmbed = new EmbedBuilder()
+            .setColor(Colors.custom.Love)
+            .setImage('https://i.imgur.com/AyK03tv.png')
+
         const selectMenuOptions = new CreateSelectMenuOptions()
 
         // Desiludidos
@@ -33,6 +38,7 @@ module.exports = class extends Command {
             .setImage('https://i.imgur.com/VRtGv6S.png')
             .setColor(Colors.custom.Love)
 
+        interaction.channel.send({ embeds: [tituloEmbed] })
         interaction.channel.send({ embeds: [desiludidosEmbed], components: [desiludidosRow] })
         interaction.channel.send({ embeds: [correioEmbed], components: [correioRow] })
 
