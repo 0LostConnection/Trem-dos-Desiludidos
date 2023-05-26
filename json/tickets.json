@@ -1,25 +1,38 @@
 [
     {
-        "type": 1,
+        "type": 0,
         "sellerId": "437249534096048130",
         "buyer": {
-            "name": "Teste",
-            "number": "Teste"
+            "name": "Geovane",
+            "number": "3B"
         },
-        "receiver": {
-            "name": "Teste",
-            "number": "Teste"
-        },
-        "product": "bilhete+bombom+pirulito",
-        "message": "Teste"
+        "product": "pirulito"
     },
     {
         "type": 0,
-        "sellerId": "482155160479596545",
+        "sellerId": "437249534096048130",
         "buyer": {
-            "name": "Angela",
-            "number": "Satanas"
+            "name": "Geovane",
+            "number": "3B"
         },
-        "product": "2+brigadeiros"
+        "product": "bombom"
+    },
+    {
+        "type": 0,
+        "sellerId": "437249534096048130",
+        "buyer": {
+            "name": "Geovane",
+            "number": "3B"
+        },
+        "product": "fini"
+    },
+    {
+        "type": 0,
+        "sellerId": "437249534096048130",
+        "buyer": {
+            "name": "Geovane",
+            "number": "3B"
+        },
+        "product": "brigadeiro"
     }
 ]

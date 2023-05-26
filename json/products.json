@@ -24,23 +24,13 @@
                 }
             },
             {
-                "name": "Sabores Só Meus",
-                "emoji": "🍭",
-                "description": "Bombom + Pirulito",
-                "id": "bombom+pirulito",
+                "name": "Sabor Só Meu",
+                "emoji": "🧁",
+                "description": "Fini",
+                "id": "fini",
                 "price": {
                     "money": "3,00",
                     "pix": "2,50"
-                }
-            },
-            {
-                "name": "Guloseimas de Autocuidado",
-                "emoji": "🧁",
-                "description": "Bombom + Fini",
-                "id": "bombom+fini",
-                "price": {
-                    "money": "4,50",
-                    "pix": "4,50"
                 }
             },
             {
@@ -51,36 +41,6 @@
                 "price": {
                     "money": "3,00",
                     "pix": "3,00"
-                }
-            },
-            {
-                "name": "Doce Pessoal",
-                "emoji": "😋",
-                "description": "Brigadeiro + Pirulito",
-                "id": "brigadeiro+pirulito",
-                "price": {
-                    "money": "3,00",
-                    "pix": "3,00"
-                }
-            },
-            {
-                "name": "Sabor que Me Completa",
-                "emoji": "🍬",
-                "description": "Brigadeiro + Fini",
-                "id": "brigadeiro+fini",
-                "price": {
-                    "money": "4,50",
-                    "pix": "4,50"
-                }
-            },
-            {
-                "name": "Dupla de Felicidade Própria",
-                "emoji": "🍫",
-                "description": "2 Brigadeiros",
-                "id": "2+brigadeiros",
-                "price": {
-                    "money": "5,00",
-                    "pix": "5,00"
                 }
             }
         ]

@@ -9,15 +9,18 @@ module.exports = class ProcessTicketData {
     registrarTicket(interaction, ticketType) {
         switch (ticketType) {
             case 0:
-                ticketsDB.adicionarTicket({
-                    type: ticketType,
-                    sellerId: interaction.user.id,
-                    buyer: {
-                        name: interaction.fields.getTextInputValue('comprador'),
-                        number: interaction.fields.getTextInputValue('comprador:serie')
-                    },
-                    product: interaction.customId
-                })
+                const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
+                for (const product of productsArray) {
+                    ticketsDB.adicionarTicket({
+                        type: ticketType,
+                        sellerId: interaction.user.id,
+                        buyer: {
+                            name: interaction.fields.getTextInputValue('comprador'),
+                            number: interaction.fields.getTextInputValue('comprador:serie')
+                        },
+                        product: product
+                    })
+                }
                 break
 
             case 1:
@@ -54,33 +57,36 @@ module.exports = class ProcessTicketData {
         let ticketEmbed = {}
         switch (ticketType) {
             case 0:
-                ticketEmbed = new EmbedBuilder()
-                    .setColor(Colors.dark.Purple)
-                    .setTitle('Ticket de Registro de Venda')
-                    .setFields([
-                        {
-                            "name": "Vendedor",
-                            "value": `\`${vendedorDB.obterVendedor(interaction.user.id)?.name || interaction.user.username}\``
-                        },
-                        {
-                            "name": "Comprador",
-                            "value": `\`${interaction.fields.getTextInputValue('comprador')}\``,
-                            "inline": true
-                        },
-                        {
-                            "name": "Série do Comprador",
-                            "value": `\`${interaction.fields.getTextInputValue('comprador:serie')}\``,
-                            "inline": true
-                        },
-                        {
-                            "name": "Produto",
-                            "value": `\`${productsDictionary[interaction.customId]}\``
-                        },
-                    ])
-                    .setFooter({ text: 'Desiludidos' })
+                const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
+                for (const product of productsArray) {
+                    ticketEmbed = new EmbedBuilder()
+                        .setColor(Colors.dark.Purple)
+                        .setTitle('Ticket de Registro de Venda')
+                        .setFields([
+                            {
+                                "name": "Vendedor",
+                                "value": `\`${vendedorDB.obterVendedor(interaction.user.id)?.name || interaction.user.username}\``
+                            },
+                            {
+                                "name": "Comprador",
+                                "value": `\`${interaction.fields.getTextInputValue('comprador')}\``,
+                                "inline": true
+                            },
+                            {
+                                "name": "Série do Comprador",
+                                "value": `\`${interaction.fields.getTextInputValue('comprador:serie')}\``,
+                                "inline": true
+                            },
+                            {
+                                "name": "Produto",
+                                "value": `\`${productsDictionary[product]}\``
+                            },
+                        ])
+                        .setFooter({ text: 'Desiludidos' })
 
-                ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
-                backupChannel.send({ embeds: [ticketEmbed] })
+                    ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
+                    //backupChannel.send({ embeds: [ticketEmbed] })
+                }
                 break
 
             case 1:
@@ -173,7 +179,7 @@ module.exports = class ProcessTicketData {
 
     calcularLucro() {
         const ticketJson = ticketsDB.obterTickets()
-           
+
         return {}
     }
 

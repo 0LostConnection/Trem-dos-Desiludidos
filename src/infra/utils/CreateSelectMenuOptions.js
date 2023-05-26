@@ -6,6 +6,8 @@ module.exports = class createSelectMenuOptions {
         this.desiludidosSelectMenu = new StringSelectMenuBuilder()
             .setCustomId('produtos:desiludidos')
             .setPlaceholder('Selecione um produto')
+            .setMinValues(1)
+            .setMaxValues(4)
 
         this.correioSelectMenu = new StringSelectMenuBuilder()
             .setCustomId('produtos:correio')

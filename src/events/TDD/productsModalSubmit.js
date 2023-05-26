@@ -18,7 +18,7 @@ module.exports = class extends eventStructure {
         const backupChannel = interaction.guild.channels.cache.get(backupChannelId)
         const ticketsChannel = interaction.guild.channels.cache.get(ticketsChannelId)
 
-        if (productsArray.desiludidos.includes(interaction.customId)) {
+        if (productsArray.desiludidos.some(r => interaction.customId.replace('+', ' ').split(' ').includes(r))) {
             try {
                 interaction.message.edit({ components: interaction.message.components })
             } catch (error) {
@@ -28,9 +28,9 @@ module.exports = class extends eventStructure {
             enviarTicket(ticketsChannel, backupChannel, interaction, 0)
             registrarTicket(interaction, 0)
 
-
             interaction.deferUpdate()
         }
+
         if (productsArray.correio.includes(interaction.customId)) {
             try {
                 interaction.message.edit({ components: interaction.message.components })
