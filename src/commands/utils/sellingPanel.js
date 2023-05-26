@@ -1,5 +1,5 @@
 const Command = require('../../infra/structures/CommandStructure')
-const createSelectMenuOptions = require('../../infra/utils/selectMenuOptions')
+const CreateSelectMenuOptions = require('../../infra/utils/CreateSelectMenuOptions')
 const { Colors } = require('../../../config')
 const { PermissionFlagsBits, ActionRowBuilder, EmbedBuilder, } = require('discord.js')
 
@@ -17,7 +17,12 @@ module.exports = class extends Command {
     run = (interaction) => {
         interaction.reply({ content: 'Ok!', ephemeral: true })
 
-        const selectMenuOptions = new createSelectMenuOptions()
+        // Título
+        const tituloEmbed = new EmbedBuilder()
+            .setColor(Colors.custom.Love)
+            .setImage('https://i.imgur.com/JRG3xRm.png')
+
+        const selectMenuOptions = new CreateSelectMenuOptions()
 
         // Desiludidos
         const desiludidosRow = new ActionRowBuilder()
@@ -33,6 +38,7 @@ module.exports = class extends Command {
             .setImage('https://i.imgur.com/VRtGv6S.png')
             .setColor(Colors.custom.Love)
 
+        interaction.channel.send({ embeds: [tituloEmbed] })
         interaction.channel.send({ embeds: [desiludidosEmbed], components: [desiludidosRow] })
         interaction.channel.send({ embeds: [correioEmbed], components: [correioRow] })
 

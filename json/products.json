@@ -9,8 +9,8 @@
                 "description": "Pirulito",
                 "id": "pirulito",
                 "price": {
-                    "money": "R$0,75",
-                    "pix": "R$0,50"
+                    "money": "0,75",
+                    "pix": "0,50"
                 }
             },
             {
@@ -19,28 +19,18 @@
                 "description": "Bombom",
                 "id": "bombom",
                 "price": {
-                    "money": "R$2,50",
-                    "pix": "R$2,00"
+                    "money": "2,50",
+                    "pix": "2,00"
                 }
             },
             {
-                "name": "Sabores Só Meus",
-                "emoji": "🍭",
-                "description": "Bombom + Pirulito",
-                "id": "bombom+pirulito",
-                "price": {
-                    "money": "R$3,00",
-                    "pix": "R$2,50"
-                }
-            },
-            {
-                "name": "Guloseimas de Autocuidado",
+                "name": "Sabor Só Meu",
                 "emoji": "🧁",
-                "description": "Bombom + Fini",
-                "id": "bombom+fini",
+                "description": "Fini",
+                "id": "fini",
                 "price": {
-                    "money": "R$4,50",
-                    "pix": "R$4,50"
+                    "money": "3,00",
+                    "pix": "2,50"
                 }
             },
             {
@@ -49,38 +39,8 @@
                 "description": "Brigadeiro",
                 "id": "brigadeiro",
                 "price": {
-                    "money": "R$3,00",
-                    "pix": "R$3,00"
-                }
-            },
-            {
-                "name": "Doce Pessoal",
-                "emoji": "😋",
-                "description": "Brigadeiro + Pirulito",
-                "id": "brigadeiro+pirulito",
-                "price": {
-                    "money": "R$3,00",
-                    "pix": "R$3,00"
-                }
-            },
-            {
-                "name": "Sabor que Me Completa",
-                "emoji": "🍬",
-                "description": "Brigadeiro + Fini",
-                "id": "brigadeiro+fini",
-                "price": {
-                    "money": "R$4,50",
-                    "pix": "R$4,50"
-                }
-            },
-            {
-                "name": "Dupla de Felicidade Própria",
-                "emoji": "🍫",
-                "description": "2 Brigadeiros",
-                "id": "2+brigadeiros",
-                "price": {
-                    "money": "R$5,00",
-                    "pix": "R$5,00"
+                    "money": "3,00",
+                    "pix": "3,00"
                 }
             }
         ]
@@ -95,8 +55,8 @@
                 "description": "Mensagem Direct",
                 "id": "direct",
                 "price": {
-                    "money": "R$0,25",
-                    "pix": "R$0,25"
+                    "money": "0,25",
+                    "pix": "0,25"
                 }
             },
             {
@@ -105,8 +65,8 @@
                 "description": "Bilhete",
                 "id": "bilhete",
                 "price": {
-                    "money": "R$1,00",
-                    "pix": "R$0,75"
+                    "money": "1,00",
+                    "pix": "0,75"
                 }
             },
             {
@@ -115,8 +75,8 @@
                 "description": "Bilhete + Pirulito",
                 "id": "bilhete+pirulito",
                 "price": {
-                    "money": "R$1,50",
-                    "pix": "R$1,50"
+                    "money": "1,50",
+                    "pix": "1,50"
                 }
             },
             {
@@ -125,8 +85,8 @@
                 "description": "Bilhete + Bombom",
                 "id": "bilhete+bombom",
                 "price": {
-                    "money": "R$3,00",
-                    "pix": "R$3,00"
+                    "money": "3,00",
+                    "pix": "3,00"
                 }
             },
             {
@@ -135,8 +95,8 @@
                 "description": "Bilhete + Bombom + Pirulito",
                 "id": "bilhete+bombom+pirulito",
                 "price": {
-                    "money": "R$3,75",
-                    "pix": "R$3,50"
+                    "money": "3,75",
+                    "pix": "3,50"
                 }
             },
             {
@@ -145,8 +105,8 @@
                 "description": "Bilhete + Brigadeiro",
                 "id": "bilhete+brigadeiro",
                 "price": {
-                    "money": "R$3,50",
-                    "pix": "R$3,00"
+                    "money": "3,50",
+                    "pix": "3,00"
                 }
             },
             {
@@ -155,8 +115,8 @@
                 "description": "Bilhete + Brigadeiro + Pirulito",
                 "id": "bilhete+brigadeiro+pirulito",
                 "price": {
-                    "money": "R$4,0",
-                    "pix": "R$4,00"
+                    "money": "4,0",
+                    "pix": "4,00"
                 }
             },
             {
@@ -165,8 +125,8 @@
                 "description": "Bilhete + Brigadeiro + Fini",
                 "id": "bilhete+brigadeiro+fini",
                 "price": {
-                    "money": "R$5,50",
-                    "pix": "R$5,00"
+                    "money": "5,50",
+                    "pix": "5,00"
                 }
             }
         ]

@@ -1,6 +1,6 @@
 module.exports = async (client, interaction) => {
     const VendedorDB = require('../../infra/utils/VendedorDB')
-    const Database = new VendedorDB(`${process.cwd()}/sellers.json`)
+    const Database = new VendedorDB(`${process.cwd()}/json/sellers.json`)
 
     await interaction.deferReply({ ephemeral: true })
 
