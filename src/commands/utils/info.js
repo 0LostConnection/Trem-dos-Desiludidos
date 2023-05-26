@@ -21,8 +21,18 @@ module.exports = class extends Command {
                         },
                         {
                             type: 1,
+                            name: 'por-produto',
+                            description: 'Número de vendas por produto.',
+                        },
+                        {
+                            type: 1,
                             name: 'total',
                             description: 'Total de vendas.',
+                        },
+                        {
+                            type: 1,
+                            name: 'lucro',
+                            description: 'Lucro total',
                         }
                     ]
                 },
