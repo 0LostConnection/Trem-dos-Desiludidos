@@ -4,7 +4,7 @@ const ticketsDB = new TicketsDB(`${process.cwd()}/json/tickets.json`)
 const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
 const productsDictionary = new ParseProductJSON().getDictionary()
 const VendedorDB = require('../../infra/utils/VendedorDB')
-const vendedorDB = new VendedorDB(`${process.cwd()}/json/tickets.json`)
+const vendedorDB = new VendedorDB(`${process.cwd()}/json/sellers.json`)
 
 module.exports = class ProcessTicketData {
     registrarTicket(interaction, ticketType) {
@@ -53,7 +53,6 @@ module.exports = class ProcessTicketData {
             )
 
         let ticketEmbed = {}
-
         switch (ticketType) {
             case 0:
                 ticketEmbed = new EmbedBuilder()
