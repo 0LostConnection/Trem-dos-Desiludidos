@@ -31,4 +31,23 @@ module.exports = class parseProductJSON {
         }
         return idsArrays
     }
+
+    createProductsChoices() {
+        let idsArrays = { desiludidos: [], correio: [] }
+        for (const category of this.productsJson) {
+            for (const product of category.products) {
+                switch (category.type) {
+                    case 0:
+                        idsArrays.desiludidos.push({ name: product.description, value: product.id })
+                        break
+                    case 1:
+                        idsArrays.correio.push({ name: product.description, value: product.id })
+                        break
+                }
+            }
+        }
+        return idsArrays
+    }
+
+
 }

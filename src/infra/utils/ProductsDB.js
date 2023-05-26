@@ -15,10 +15,8 @@ module.exports = class ProductsDB {
         }
     }
 
-    obterPreco(productId) {
+    obterPreco(productId, type) {
         let data = this.carregarDados()
-        for (const productType of data) {
-            return productType.products.find(p => p.id == productId)?.price || []
-        }
+        return data[type].products.find(p => p.id == productId)?.price || []
     }
 }

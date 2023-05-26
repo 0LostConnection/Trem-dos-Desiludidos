@@ -4,6 +4,8 @@ const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
 const productsDictionary = new ParseProductJSON().getDictionary()
 const VendedorDB = require('../../infra/utils/VendedorDB')
 const vendedorDB = new VendedorDB(`${process.cwd()}/json/sellers.json`)
+const ProductsDB = require('../../infra/utils/ProductsDB')
+const productsDB = new ProductsDB(`${process.cwd()}/json/products.json`)
 
 module.exports = class ProcessTicketData {
     registrarTicket(interaction, ticketType) {
@@ -177,10 +179,19 @@ module.exports = class ProcessTicketData {
         return sellingsArray
     }
 
-    calcularLucro() {
+    calcularLucro(productId, type) {
         const ticketJson = ticketsDB.obterTickets()
+        const productPrice = productsDB.obterPreco(productId, type)
 
-        return {}
+        let productSellings = 0
+
+        for (const ticket of ticketJson) {
+            if (ticket.product === productId) {
+                productSellings += 1
+            }
+        }
+
+        return { min: String(productSellings * Number(productPrice.pix.replace(',', '.'))).replace('.', ','), max: String(productSellings * Number(productPrice.money.replace(',', '.'))).replace('.', ','), total: productSellings }
     }
 
     totalDeVendas() {

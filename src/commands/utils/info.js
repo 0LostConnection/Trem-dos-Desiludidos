@@ -1,4 +1,5 @@
 const Command = require('../../infra/structures/CommandStructure')
+const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
 const { PermissionFlagsBits } = require('discord.js')
 
 module.exports = class extends Command {
@@ -31,20 +32,43 @@ module.exports = class extends Command {
                         },
                         {
                             type: 1,
-                            name: 'lucro',
+                            name: 'lucro-desiludidos',
                             description: 'Lucro total',
+                            options: [
+                                {
+                                    type: 3,
+                                    name: 'produto',
+                                    description: 'Produto da loja dos desiludidos.',
+                                    required: true,
+                                    choices: new ParseProductJSON().createProductsChoices().desiludidos
+                                }
+                            ]
+                        },
+                        {
+                            type: 1,
+                            name: 'lucro-correio',
+                            description: 'Lucro total',
+                            options: [
+                                {
+                                    type: 3,
+                                    name: 'produto',
+                                    description: 'Produto da loja do correio elegante..',
+                                    required: true,
+                                    choices: new ParseProductJSON().createProductsChoices().correio
+                                }
+                            ]
                         }
                     ]
                 },
                 {
                     type: 2,
                     name: 'vendedores',
-                    description: 'Informações sobre os vendedores',
+                    description: 'Informações sobre os vendedores.',
                     options: [
                         {
                             type: 1,
                             name: 'listar',
-                            description: 'Lista todos os vendedores registrados.',
+                            description: 'Lista todos os vendedores registrados.'
                         }
                     ]
                 }
