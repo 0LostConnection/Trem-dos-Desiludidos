@@ -151,6 +151,32 @@ module.exports = class ProcessTicketData {
         return sellersArray
     }
 
+    vendasPorProduto() {
+        const ticketsJson = ticketsDB.obterTickets()
+        let sellingsArray = []
+        let sellingData = {}
+
+        for (const ticket of ticketsJson) {
+            sellingData[ticket.product] = 0
+        }
+
+        for (const ticket of ticketsJson) {
+            sellingData[ticket.product] += 1
+        }
+
+        for (const [productId, totalSales] of Object.entries(sellingData)) {
+            sellingsArray.push(`\`${productsDictionary[productId]}\` - \`${totalSales}\``)
+        }
+
+        return sellingsArray
+    }
+
+    calcularLucro() {
+        const ticketJson = ticketsDB.obterTickets()
+           
+        return {}
+    }
+
     totalDeVendas() {
         return ticketsDB.obterTickets().length
     }

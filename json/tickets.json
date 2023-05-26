@@ -1,1 +1,25 @@
-[]
+[
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "buyer": {
+            "name": "Teste",
+            "number": "Teste"
+        },
+        "receiver": {
+            "name": "Teste",
+            "number": "Teste"
+        },
+        "product": "bilhete+bombom+pirulito",
+        "message": "Teste"
+    },
+    {
+        "type": 0,
+        "sellerId": "482155160479596545",
+        "buyer": {
+            "name": "Angela",
+            "number": "Satanas"
+        },
+        "product": "2+brigadeiros"
+    }
+]
