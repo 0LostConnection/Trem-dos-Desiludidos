@@ -3,8 +3,45 @@
         "type": 0,
         "sellerId": "437249534096048130",
         "buyer": {
-            "name": "Geovane",
+            "name": "Geovane Saraiva",
             "number": "3B"
+        },
+        "product": "pirulito"
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "buyer": {
+            "name": "Geovane Saraiva",
+            "number": "3B"
+        },
+        "receiver": {
+            "name": "Davi Mello",
+            "number": "."
+        },
+        "product": "direct",
+        "message": "Olá!"
+    },
+    {
+        "type": 1,
+        "sellerId": "482155160479596545",
+        "buyer": {
+            "name": "Geovane Saraiva",
+            "number": "3B"
+        },
+        "receiver": {
+            "name": "Davi Mello",
+            "number": "."
+        },
+        "product": "direct",
+        "message": "Olá!"
+    },
+    {
+        "type": 0,
+        "sellerId": "437249534096048130",
+        "buyer": {
+            "name": "asd",
+            "number": "asd"
         },
         "product": "pirulito"
     }

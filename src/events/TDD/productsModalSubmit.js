@@ -1,7 +1,7 @@
 const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
 const productsArray = new ParseProductJSON().getIdsArray()
 const ProcessTicketData = require('../../infra/utils/ProcessTicketData')
-const { sendTicket, registerTicket } = new ProcessTicketData()
+const { enviarTicket, registrarTicket } = new ProcessTicketData()
 const eventStructure = require(`../../infra/structures/EventStructure`)
 const { ticketsChannelId, backupChannelId } = require('../../../config')
 
@@ -25,8 +25,8 @@ module.exports = class extends eventStructure {
                 throw error
             }
 
-            sendTicket(ticketsChannel, backupChannel, interaction, 0)
-            registerTicket(interaction, 0)
+            enviarTicket(ticketsChannel, backupChannel, interaction, 0)
+            registrarTicket(interaction, 0)
 
 
             interaction.deferUpdate()
@@ -38,8 +38,8 @@ module.exports = class extends eventStructure {
                 throw error
             }
 
-            sendTicket(ticketsChannel, backupChannel, interaction, 1)
-            registerTicket(interaction, 1)
+            enviarTicket(ticketsChannel, backupChannel, interaction, 1)
+            registrarTicket(interaction, 1)
 
             interaction.deferUpdate()
         }

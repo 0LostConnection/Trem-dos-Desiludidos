@@ -1,3 +1,4 @@
+const { readFileSync } = require('fs')
 const TicketsDB = require('./TicketsDB')
 const ticketsDB = new TicketsDB(`${process.cwd()}/json/tickets.json`)
 const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
@@ -6,7 +7,7 @@ const VendedorDB = require('../../infra/utils/VendedorDB')
 const vendedorDB = new VendedorDB(`${process.cwd()}/json/tickets.json`)
 
 module.exports = class ProcessTicketData {
-    registerTicket(interaction, ticketType) {
+    registrarTicket(interaction, ticketType) {
         switch (ticketType) {
             case 0:
                 ticketsDB.adicionarTicket({
@@ -39,7 +40,7 @@ module.exports = class ProcessTicketData {
         }
     }
 
-    sendTicket = (ticketsChannel, backupChannel, interaction, ticketType) => {
+    enviarTicket(ticketsChannel, backupChannel, interaction, ticketType) {
         const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
         const { Colors } = require('../../../config')
 
@@ -89,7 +90,7 @@ module.exports = class ProcessTicketData {
                     .setColor(Colors.custom.Love)
                     .setTitle('Ticket de Registro de Venda')
                     .setFields([
-                        
+
                         {
                             "name": "Vendedor",
                             "value": `\`${vendedorDB.obterVendedor(interaction.user.id)?.name || interaction.user.username}\``
@@ -130,5 +131,30 @@ module.exports = class ProcessTicketData {
         }
 
 
+    }
+
+    vendasPorVendedor() {
+        const ticketsJson = ticketsDB.obterTickets()
+        let sellersArray = []
+        let sellerData = {}
+
+        for (const ticket of ticketsJson) {
+            sellerData[ticket.sellerId] = 0
+        }
+
+        for (const ticket of ticketsJson) {
+            sellerData[ticket.sellerId] += 1
+        }
+
+        for (const [sellerId, totalSales] of Object.entries(sellerData)) {
+            sellersArray.push(`<@${sellerId}> - \`${totalSales}\``)
+        }
+
+        return sellersArray
+    }
+
+    totalDeVendas() {
+        console.log(ticketsDB.obterTickets().length)
+        return ticketsDB.obterTickets().length
     }
 }
