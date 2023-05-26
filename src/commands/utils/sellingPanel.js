@@ -1,5 +1,5 @@
 const Command = require('../../infra/structures/CommandStructure')
-const createSelectMenuOptions = require('../../infra/utils/selectMenuOptions')
+const CreateSelectMenuOptions = require('../../infra/utils/CreateSelectMenuOptions')
 const { Colors } = require('../../../config')
 const { PermissionFlagsBits, ActionRowBuilder, EmbedBuilder, } = require('discord.js')
 
@@ -17,7 +17,7 @@ module.exports = class extends Command {
     run = (interaction) => {
         interaction.reply({ content: 'Ok!', ephemeral: true })
 
-        const selectMenuOptions = new createSelectMenuOptions()
+        const selectMenuOptions = new CreateSelectMenuOptions()
 
         // Desiludidos
         const desiludidosRow = new ActionRowBuilder()
