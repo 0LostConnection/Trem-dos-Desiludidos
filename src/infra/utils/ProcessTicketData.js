@@ -61,8 +61,7 @@ module.exports = class ProcessTicketData {
             case 0:
                 const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
                 for (const product of productsArray) {
-                    ticketEmbed.push(
-                        new EmbedBuilder()
+                    ticketEmbed = new EmbedBuilder()
                             .setColor(Colors.dark.Purple)
                             .setTitle('Ticket de Registro de Venda')
                             .setFields([
@@ -86,10 +85,10 @@ module.exports = class ProcessTicketData {
                                 },
                             ])
                             .setFooter({ text: 'Desiludidos' })
-                    )
+                    
 
-                    ticketsChannel.send({ embeds: ticketEmbed, components: [deleteButton] })
-                    backupChannel.send({ embeds: ticketEmbed })
+                    ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
+                    backupChannel.send({ embeds: [ticketEmbed] })
                 }
                 break
 
