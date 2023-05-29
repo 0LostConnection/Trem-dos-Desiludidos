@@ -1,7 +1,7 @@
-const ProcessTicketData = require('../../infra/utils/ProcessTicketData')
-const { totalDeVendas } = new ProcessTicketData()
 const { EmbedBuilder } = require('discord.js')
 const { Colors } = require('../../../config')
+const ProcessTicketData = require('../../infra/utils/ProcessTicketData')
+const { totalDeVendas } = new ProcessTicketData()
 
 module.exports = (client, interaction) => {
     const totalAmount = totalDeVendas()

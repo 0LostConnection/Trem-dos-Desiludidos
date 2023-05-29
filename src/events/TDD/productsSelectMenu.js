@@ -9,7 +9,7 @@ module.exports = class extends eventStructure {
         })
     }
 
-    run = async (interaction) => {
+    run = (interaction) => {
         if (!interaction.isStringSelectMenu()) return
         if (!interaction.client.config.productsTypes.includes(interaction.customId)) return
 
