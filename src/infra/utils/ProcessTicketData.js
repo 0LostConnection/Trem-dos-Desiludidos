@@ -1,19 +1,22 @@
-const TicketsDB = require('./TicketsDB')
-const ticketsDB = new TicketsDB(`${process.cwd()}/json/tickets.json`)
 const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
 const productsDictionary = new ParseProductJSON().getDictionary()
 const VendedorDB = require('../../infra/utils/VendedorDB')
 const vendedorDB = new VendedorDB(`${process.cwd()}/json/sellers.json`)
 const ProductsDB = require('../../infra/utils/ProductsDB')
 const productsDB = new ProductsDB(`${process.cwd()}/json/products.json`)
+const TicketsDB = require('../../database/TicketsDB')
+
 
 module.exports = class ProcessTicketData {
+    constructor(ticketsData) {
+        this.ticketsData = ticketsData
+    }
     registrarTicket(interaction, ticketType) {
         switch (ticketType) {
             case 0:
                 const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
                 for (const product of productsArray) {
-                    ticketsDB.adicionarTicket({
+                    new TicketsDB().adicionarTicket({
                         type: ticketType,
                         sellerId: interaction.user.id,
                         buyer: {
@@ -26,7 +29,7 @@ module.exports = class ProcessTicketData {
                 break
 
             case 1:
-                ticketsDB.adicionarTicket({
+                new TicketsDB().adicionarTicket({
                     type: ticketType,
                     sellerId: interaction.user.id,
                     buyer: {
@@ -62,30 +65,30 @@ module.exports = class ProcessTicketData {
                 const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
                 for (const product of productsArray) {
                     ticketEmbed = new EmbedBuilder()
-                            .setColor(Colors.dark.Purple)
-                            .setTitle('Ticket de Registro de Venda')
-                            .setFields([
-                                {
-                                    "name": "Vendedor",
-                                    "value": `\`${vendedorDB.obterVendedor(interaction.user.id)?.name || interaction.user.username}\``
-                                },
-                                {
-                                    "name": "Comprador",
-                                    "value": `\`${interaction.fields.getTextInputValue('comprador')}\``,
-                                    "inline": true
-                                },
-                                {
-                                    "name": "Série do Comprador",
-                                    "value": `\`${interaction.fields.getTextInputValue('comprador:serie')}\``,
-                                    "inline": true
-                                },
-                                {
-                                    "name": "Produto",
-                                    "value": `\`${productsDictionary[product]}\``
-                                },
-                            ])
-                            .setFooter({ text: 'Desiludidos' })
-                    
+                        .setColor(Colors.dark.Purple)
+                        .setTitle('Ticket de Registro de Venda')
+                        .setFields([
+                            {
+                                "name": "Vendedor",
+                                "value": `\`${vendedorDB.obterVendedor(interaction.user.id)?.name || interaction.user.username}\``
+                            },
+                            {
+                                "name": "Comprador",
+                                "value": `\`${interaction.fields.getTextInputValue('comprador')}\``,
+                                "inline": true
+                            },
+                            {
+                                "name": "Série do Comprador",
+                                "value": `\`${interaction.fields.getTextInputValue('comprador:serie')}\``,
+                                "inline": true
+                            },
+                            {
+                                "name": "Produto",
+                                "value": `\`${productsDictionary[product]}\``
+                            },
+                        ])
+                        .setFooter({ text: 'Desiludidos' })
+
 
                     ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
                     backupChannel.send({ embeds: [ticketEmbed] })
@@ -139,15 +142,14 @@ module.exports = class ProcessTicketData {
     }
 
     vendasPorVendedor() {
-        const ticketsJson = ticketsDB.obterTickets()
         let sellersArray = []
         let sellerData = {}
 
-        for (const ticket of ticketsJson) {
+        for (const [index, ticket] of Object.entries(this.ticketsData)) {
             sellerData[ticket.sellerId] = 0
         }
 
-        for (const ticket of ticketsJson) {
+        for (const [index, ticket] of Object.entries(this.ticketsData)) {
             sellerData[ticket.sellerId] += 1
         }
 
@@ -159,15 +161,14 @@ module.exports = class ProcessTicketData {
     }
 
     vendasPorProduto() {
-        const ticketsJson = ticketsDB.obterTickets()
         let sellingsArray = []
         let sellingData = {}
 
-        for (const ticket of ticketsJson) {
+        for (const [index, ticket] of Object.entries(this.ticketsData)) {
             sellingData[ticket.product] = 0
         }
 
-        for (const ticket of ticketsJson) {
+        for (const [index, ticket] of Object.entries(this.ticketsData)) {
             sellingData[ticket.product] += 1
         }
 
@@ -179,12 +180,11 @@ module.exports = class ProcessTicketData {
     }
 
     calcularLucro(productId, type) {
-        const ticketJson = ticketsDB.obterTickets()
         const productPrice = productsDB.obterPreco(productId, type)
 
         let productSellings = 0
 
-        for (const ticket of ticketJson) {
+        for (const [index, ticket] of Object.entries(this.ticketsData)) {
             if (ticket.product === productId) {
                 productSellings += 1
             }
@@ -194,6 +194,6 @@ module.exports = class ProcessTicketData {
     }
 
     totalDeVendas() {
-        return ticketsDB.obterTickets().length
+        return this.ticketsData.length
     }
 }

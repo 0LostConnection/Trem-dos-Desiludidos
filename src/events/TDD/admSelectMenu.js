@@ -8,11 +8,14 @@ module.exports = class extends eventStructure {
         })
     }
 
-    run = (interaction) => {
+    run = async (interaction) => {
         if (!interaction.isStringSelectMenu()) return
         if (interaction.customId !== 'adm') return
-        interaction.message.edit({ components: interaction.message.components })
+
+        await interaction.deferReply({ ephemeral: true })
         
+        await interaction.message.edit({ components: interaction.message.components })
+
         switch (interaction.values[0]) {
             case 'adm:lucro-desiludidos':
                 lucroDesiludidos(interaction)
