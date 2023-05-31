@@ -122,8 +122,8 @@
             {
                 "name": "Doce Encanto",
                 "emoji": "🥰",
-                "description": "Bilhete + Brigadeiro + Fini",
-                "id": "bilhete+brigadeiro+fini",
+                "description": "Dobradura + Brigadeiro + Fini",
+                "id": "dobradura+brigadeiro+fini",
                 "price": {
                     "money": "5,50",
                     "pix": "5,00"
