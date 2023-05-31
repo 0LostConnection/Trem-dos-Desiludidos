@@ -11,12 +11,15 @@ module.exports = class ProcessTicketData {
     constructor(ticketsData) {
         this.ticketsData = ticketsData
     }
+
     registrarTicket(interaction, ticketType) {
+        let ticketsArray = []
+
         switch (ticketType) {
             case 0:
                 const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
                 for (const product of productsArray) {
-                    new TicketsDB().adicionarTicket({
+                    ticketsArray.push({
                         type: ticketType,
                         sellerId: interaction.user.id,
                         buyer: {
@@ -26,10 +29,11 @@ module.exports = class ProcessTicketData {
                         product: product
                     })
                 }
+                new TicketsDB().adicionarTicket(ticketsArray)
                 break
 
             case 1:
-                new TicketsDB().adicionarTicket({
+                ticketsArray.push({
                     type: ticketType,
                     sellerId: interaction.user.id,
                     buyer: {
@@ -43,6 +47,7 @@ module.exports = class ProcessTicketData {
                     product: interaction.customId,
                     message: interaction.fields.getTextInputValue('mensagem')
                 })
+                new TicketsDB().adicionarTicket(ticketsArray)
                 break
         }
     }

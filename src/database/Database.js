@@ -18,7 +18,7 @@ module.exports = class Database {
 
     async disconnect() {
         try {
-            await mongoose.disconnect();
+            await mongoose.disconnect()
             //console.log('Desconectado do banco de dados.');
         } catch (error) {
             console.error('Erro ao desconectar do banco de dados:', error);

@@ -5,13 +5,28 @@ module.exports = class extends Database {
         super(process.env.DATABASE_SECRET)
     }
 
+    /*  async adicionarTicket(data) {
+         const tickets = require('./models/Ticket')
+         const connection = await super.connect()
+         const database = { connection, tickets }
+         const ticket =  new database.tickets(data)
+         await ticket.save()
+         await super.disconnect()
+     } */
+
     async adicionarTicket(data) {
         const tickets = require('./models/Ticket')
         const connection = await super.connect()
         const database = { connection, tickets }
-        const ticket = new database.tickets(data)
-        await ticket.save()
-        await super.disconnect()
+
+        database.tickets.collection.insertMany(data, async (err, docs) => {
+            if (err) {
+                    console.log(err)
+            } else {
+                await super.disconnect()
+                //console.info('Ticket(s) salvo!');
+            }
+        })
     }
 
     async obterTickets() {
