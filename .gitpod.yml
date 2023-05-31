@@ -5,4 +5,7 @@
 tasks:
   - init: npm install
 
-
+vscode:
+  extensions:
+    - vscode-icons-team.vscode-icons
+    - kamikillerto.vscode-colorize
