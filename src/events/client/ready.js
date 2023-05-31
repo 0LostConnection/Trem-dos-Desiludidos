@@ -7,9 +7,8 @@ module.exports = class extends eventStructure {
         })
     }
 
-    run = async (interaction) => {
+    run = async () => {
         console.log(`
-Status          Online
 Name            ${this.client.user.tag}
 Guilds          ${this.client.guilds.cache.size}
         `)
