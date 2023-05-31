@@ -90,7 +90,7 @@
                 }
             },
             {
-                "name": "Amor Doce Completo",
+                "name": "Amor Completo",
                 "emoji": "💘",
                 "description": "Bilhete + Bombom + Pirulito",
                 "id": "bilhete+bombom+pirulito",
@@ -106,7 +106,7 @@
                 "id": "bilhete+brigadeiro",
                 "price": {
                     "money": "3,50",
-                    "pix": "3,00"
+                    "pix": "3,50"
                 }
             },
             {
@@ -115,7 +115,7 @@
                 "description": "Bilhete + Brigadeiro + Pirulito",
                 "id": "bilhete+brigadeiro+pirulito",
                 "price": {
-                    "money": "4,0",
+                    "money": "4,00",
                     "pix": "4,00"
                 }
             },
