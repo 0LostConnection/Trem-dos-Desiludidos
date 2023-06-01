@@ -1,7 +1,6 @@
 const Command = require('../../infra/structures/CommandStructure')
-const CreateSelectMenuOptions = require('../../infra/utils/CreateSelectMenuOptions')
 const { Colors } = require('../../../config')
-const { PermissionFlagsBits, ActionRowBuilder, EmbedBuilder, } = require('discord.js')
+const { PermissionFlagsBits, ActionRowBuilder, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, } = require('discord.js')
 
 module.exports = class extends Command {
     constructor(client) {
@@ -19,11 +18,62 @@ module.exports = class extends Command {
 
         // Título
         const tituloEmbed = new EmbedBuilder()
-            .setColor(Colors.custom.Love)
+            .setColor(Colors.custom.Emerald)
             .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
             .setImage('https://i.imgur.com/JRG3xRm.png')
 
-        const selectMenuOptions = new CreateSelectMenuOptions()
+        // Desiludidos
+        const desiludidosRow = new ActionRowBuilder()
+            .addComponents(
+                new StringSelectMenuBuilder()
+                    .setCustomId('pagamento:desiludidos')
+                    .setPlaceholder('Selecione um método de pagamento.')
+                    .addOptions(
+                        new StringSelectMenuOptionBuilder()
+                            .setLabel('Pix')
+                            .setValue('pagamento:pix')
+                            .setEmoji('<:pix:1113466593377267773>'),
+                        new StringSelectMenuOptionBuilder()
+                            .setLabel('Dinheiro')
+                            .setValue('pagamento:dinheiro')
+                            .setEmoji('💵')
+                    )
+            )
+        const desiludidosEmbed = new EmbedBuilder()
+            .setImage('https://i.imgur.com/cJgr8ci.png')
+            .setColor(Colors.dark.Purple)
+
+        // Correio Elegante
+        const correioRow = new ActionRowBuilder()
+            .addComponents(
+                new StringSelectMenuBuilder()
+                    .setCustomId('pagamento:correio')
+                    .setPlaceholder('Selecione um método de pagamento.')
+                    .addOptions(
+                        new StringSelectMenuOptionBuilder()
+                            .setLabel('Pix')
+                            .setValue('pagamento:pix')
+                            .setEmoji('<:pix:1113466593377267773>'),
+                        new StringSelectMenuOptionBuilder()
+                            .setLabel('Dinheiro')
+                            .setValue('pagamento:dinheiro')
+                            .setEmoji('💵')
+                    )
+            )
+        const correioEmbed = new EmbedBuilder()
+            .setImage('https://i.imgur.com/VRtGv6S.png')
+            .setColor(Colors.custom.Love)
+
+        interaction.channel.send({ embeds: [tituloEmbed] })
+        interaction.channel.send({ embeds: [desiludidosEmbed], components: [desiludidosRow] })
+        interaction.channel.send({ embeds: [correioEmbed], components: [correioRow] })
+    }
+}
+
+
+
+
+/* const selectMenuOptions = new CreateSelectMenuOptions()
 
         // Desiludidos
         const desiludidosRow = new ActionRowBuilder()
@@ -39,9 +89,5 @@ module.exports = class extends Command {
             .setImage('https://i.imgur.com/VRtGv6S.png')
             .setColor(Colors.custom.Love)
 
-        interaction.channel.send({ embeds: [tituloEmbed] })
         interaction.channel.send({ embeds: [desiludidosEmbed], components: [desiludidosRow] })
-        interaction.channel.send({ embeds: [correioEmbed], components: [correioRow] })
-
-    }
-}
+        interaction.channel.send({ embeds: [correioEmbed], components: [correioRow] }) */

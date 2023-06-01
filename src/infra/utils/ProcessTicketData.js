@@ -12,47 +12,53 @@ module.exports = class ProcessTicketData {
         this.ticketsData = ticketsData
     }
 
-    registrarTicket(interaction, ticketType) {
+    registrarTicket(interaction, { ticketType, paymentMethod }) {
         let ticketsArray = []
 
         switch (ticketType) {
             case 0:
                 const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
                 for (const product of productsArray) {
-                    ticketsArray.push({
-                        type: ticketType,
-                        sellerId: interaction.user.id,
-                        buyer: {
-                            name: interaction.fields.getTextInputValue('comprador'),
-                            number: interaction.fields.getTextInputValue('comprador:serie')
-                        },
-                        product: product
-                    })
+                    ticketsArray.push(
+                        {
+                            type: ticketType,
+                            sellerId: interaction.user.id,
+                            paymentMethod: paymentMethod,
+                            buyer: {
+                                name: interaction.fields.getTextInputValue('comprador'),
+                                number: interaction.fields.getTextInputValue('comprador:serie')
+                            },
+                            product: product
+                        }
+                    )
                 }
                 new TicketsDB().adicionarTicket(ticketsArray)
                 break
 
             case 1:
-                ticketsArray.push({
-                    type: ticketType,
-                    sellerId: interaction.user.id,
-                    buyer: {
-                        name: interaction.fields.getTextInputValue('comprador'),
-                        number: interaction.fields.getTextInputValue('comprador:serie')
-                    },
-                    receiver: {
-                        name: interaction.fields.getTextInputValue('destinatario'),
-                        number: interaction.fields.getTextInputValue('destinatario:serie')
-                    },
-                    product: interaction.customId,
-                    message: interaction.fields.getTextInputValue('mensagem')
-                })
+                ticketsArray.push(
+                    {
+                        type: ticketType,
+                        sellerId: interaction.user.id,
+                        paymentMethod: paymentMethod,
+                        buyer: {
+                            name: interaction.fields.getTextInputValue('comprador'),
+                            number: interaction.fields.getTextInputValue('comprador:serie')
+                        },
+                        receiver: {
+                            name: interaction.fields.getTextInputValue('destinatario'),
+                            number: interaction.fields.getTextInputValue('destinatario:serie')
+                        },
+                        product: interaction.customId,
+                        message: interaction.fields.getTextInputValue('mensagem')
+                    }
+                )
                 new TicketsDB().adicionarTicket(ticketsArray)
                 break
         }
     }
 
-    enviarTicket(ticketsChannel, backupChannel, interaction, ticketType) {
+    enviarTicket(ticketsChannel, backupChannel, interaction, { ticketType, paymentMethod }) {
         const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
         const { Colors } = require('../../../config')
 
@@ -91,6 +97,10 @@ module.exports = class ProcessTicketData {
                                 "name": "Produto",
                                 "value": `\`${productsDictionary[product]}\``
                             },
+                            {
+                                "name": "Método de pagamento",
+                                "value": `\`${paymentMethod}\``
+                            }
                         ])
                         .setFooter({ text: 'Desiludidos' })
 
@@ -138,6 +148,10 @@ module.exports = class ProcessTicketData {
                             "name": "Mensagem",
                             "value": `\`${interaction.fields.getTextInputValue('mensagem')}\``
                         },
+                        {
+                            "name": "Método de pagamento",
+                            "value": `\`${paymentMethod}\``
+                        }
                     ])
                     .setFooter({ text: 'Correio' })
                 ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
