@@ -190,11 +190,11 @@ module.exports = class ProcessTicketData {
         let sellingData = {}
 
         for (const [index, ticket] of Object.entries(this.ticketsData)) {
-            sellingData[ticket.product] = 0
+            sellingData[ticket.product.id] = 0
         }
 
         for (const [index, ticket] of Object.entries(this.ticketsData)) {
-            sellingData[ticket.product] += 1
+            sellingData[ticket.product.id] += 1
         }
 
         for (const [productId, totalSales] of Object.entries(sellingData)) {
