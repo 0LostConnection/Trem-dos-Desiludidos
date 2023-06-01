@@ -15,14 +15,16 @@ const lucroCorreio = async (interaction) => {
     for (const productId of productsIdsArray.correio) {
         const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId, 1)
 
-        fields.push({ name: `\`${productsDictionary[productId]}\``, value: `**Lucro mínimo:**\n\`R$${productProfit.min}\`\n**Lucro máximo:**\n\`R$${productProfit.max}\`\n**Total de vendas:**\n\`${productProfit.total}\`\n‎`, inline: true })
+        fields.push({ name: `__${productsDictionary[productId]}__`, value: `**nº - Pix:**\n\`${productProfit.pix.total}\` - \`R$${productProfit.pix.profit}\`\n**nº - Dinheiro:**\n\`${productProfit.money.total}\` - \`R$${productProfit.money.profit}\`\n**Lucro Total:**\n\`R$${productProfit.totalProfit}\`\n‎`, inline: true })
     }
 
     const embed = new EmbedBuilder()
         .setColor(Colors.custom.Love)
         .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
-        .setDescription('***Lucro mínimo:*** *Calculado utilizando o preço do produto pelo pix.*\n***Lucro máximo:*** *Calculado utilizando o preço do produto por dinheiro em espécie.*\n‎')
+        .setTitle('Lucro Correio Elegante')
         .setFields(fields)
+        .setImage('https://i.imgur.com/aPOaaYh.png')
+        .setFooter({ text: 'nº - Número de vendas registradas com o método de pagamento'})
 
     await interaction.editReply({ embeds: [embed], ephemeral: true })
 }
@@ -44,14 +46,16 @@ const lucroDesiludidos = async (interaction) => {
     for (const productId of productsIdsArray.desiludidos) {
         const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId, 0)
 
-        fields.push({ name: `\`${productsDictionary[productId]}\``, value: `**Lucro mínimo:**\n\`R$${productProfit.min}\`\n**Lucro máximo:**\n\`R$${productProfit.max}\`\n**Total de vendas:**\n\`${productProfit.total}\`\n‎`, inline: true })
+        fields.push({ name: `__${productsDictionary[productId]}__`, value: `**nº - Pix:**\n\`${productProfit.pix.total}\` - \`R$${productProfit.pix.profit}\`\n**nº - Dinheiro:**\n\`${productProfit.money.total}\` - \`R$${productProfit.money.profit}\`\n**Lucro Total:**\n\`R$${productProfit.totalProfit}\`\n‎`, inline: true })
     }
 
     const embed = new EmbedBuilder()
         .setColor(Colors.dark.Purple)
         .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
-        .setDescription('***Lucro mínimo:*** *Calculado utilizando o preço do produto pelo pix.*\n***Lucro máximo:*** *Calculado utilizando o preço do produto por dinheiro em espécie.*\n‎')
+        .setTitle('Lucro Desiludidos')
         .setFields(fields)
+        .setImage('https://i.imgur.com/aPOaaYh.png')
+        .setFooter({ text: 'nº - Número de vendas registradas com o método de pagamento'})
 
     await interaction.editReply({ embeds: [embed], ephemeral: true })
 }

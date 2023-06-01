@@ -201,15 +201,23 @@ module.exports = class ProcessTicketData {
     calcularLucro(productId, type) {
         const productPrice = productsDB.obterPreco(productId, type)
 
-        let productSellings = 0
+        let productSellingsPix = 0
+        let productSellingsMoney = 0
 
         for (const [index, ticket] of Object.entries(this.ticketsData)) {
-            if (ticket.product === productId) {
-                productSellings += 1
+            if (ticket.product === productId && ticket.paymentMethod === 'pix') {
+                productSellingsPix += 1
+            }
+            if (ticket.product === productId && ticket.paymentMethod === 'dinheiro') {
+                productSellingsMoney += 1
             }
         }
 
-        return { min: String(productSellings * Number(productPrice.pix.replace(',', '.'))).replace('.', ','), max: String(productSellings * Number(productPrice.money.replace(',', '.'))).replace('.', ','), total: productSellings }
+        const moneyProfit = String(productSellingsMoney * Number(productPrice.money.replace(',', '.')))
+        const pixProfit = String(productSellingsPix * Number(productPrice.pix.replace(',', '.')))
+        const totalProfit = String(Number(moneyProfit) + Number(pixProfit))
+
+        return { money: { profit: moneyProfit.replace('.', ','), total: productSellingsMoney }, pix: { profit: pixProfit.replace('.', ','), total: productSellingsPix }, totalProfit: totalProfit.replace('.', ',') }
     }
 
     totalDeVendas() {
