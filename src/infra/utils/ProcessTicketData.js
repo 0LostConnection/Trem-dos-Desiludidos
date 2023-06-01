@@ -28,7 +28,10 @@ module.exports = class ProcessTicketData {
                                 name: interaction.fields.getTextInputValue('comprador'),
                                 number: interaction.fields.getTextInputValue('comprador:serie')
                             },
-                            product: product
+                            product: {
+                                id: product,
+                                price: productsDB.obterPreco(product, 0)[paymentMethod]
+                            }
                         }
                     )
                 }
@@ -49,7 +52,10 @@ module.exports = class ProcessTicketData {
                             name: interaction.fields.getTextInputValue('destinatario'),
                             number: interaction.fields.getTextInputValue('destinatario:serie')
                         },
-                        product: interaction.customId,
+                        product: {
+                            id: interaction.customId,
+                            price: productsDB.obterPreco(interaction.customId, 1)[paymentMethod]
+                        },
                         message: interaction.fields.getTextInputValue('mensagem')
                     }
                 )
@@ -99,11 +105,10 @@ module.exports = class ProcessTicketData {
                             },
                             {
                                 "name": "Método de pagamento",
-                                "value": `\`${paymentMethod}\``
+                                "value": `\`${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}\``
                             }
                         ])
-                        .setFooter({ text: 'Desiludidos' })
-
+                        .setFooter({ text: `Desiludidos` })
 
                     ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
                     backupChannel.send({ embeds: [ticketEmbed] })
@@ -150,10 +155,11 @@ module.exports = class ProcessTicketData {
                         },
                         {
                             "name": "Método de pagamento",
-                            "value": `\`${paymentMethod}\``
+                            "value": `\`${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}\``
                         }
                     ])
-                    .setFooter({ text: 'Correio' })
+                    .setFooter({ text: `Correio Elegante` })
+
                 ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
                 backupChannel.send({ embeds: [ticketEmbed] })
                 break
@@ -198,26 +204,24 @@ module.exports = class ProcessTicketData {
         return sellingsArray
     }
 
-    calcularLucro(productId, type) {
-        const productPrice = productsDB.obterPreco(productId, type)
-
-        let productSellingsPix = 0
+    calcularLucro(productId) {
+        let moneyProfit = 0
+        let pixProfit = 0
         let productSellingsMoney = 0
+        let productSellingsPix = 0
 
         for (const [index, ticket] of Object.entries(this.ticketsData)) {
-            if (ticket.product === productId && ticket.paymentMethod === 'pix') {
-                productSellingsPix += 1
-            }
-            if (ticket.product === productId && ticket.paymentMethod === 'dinheiro') {
+            if (ticket.product.id === productId && ticket.paymentMethod === 'money') {
+                moneyProfit += Number(String(ticket.product.price.replace(',', '.')))
                 productSellingsMoney += 1
             }
+            if (ticket.product.id === productId && ticket.paymentMethod === 'pix') {
+                pixProfit += Number(ticket.product.price.replace(',', '.'))
+                productSellingsPix = 0
+            }
         }
-
-        const moneyProfit = String(productSellingsMoney * Number(productPrice.money.replace(',', '.')))
-        const pixProfit = String(productSellingsPix * Number(productPrice.pix.replace(',', '.')))
         const totalProfit = String(Number(moneyProfit) + Number(pixProfit))
-
-        return { money: { profit: moneyProfit.replace('.', ','), total: productSellingsMoney }, pix: { profit: pixProfit.replace('.', ','), total: productSellingsPix }, totalProfit: totalProfit.replace('.', ',') }
+        return { money: { profit: String(moneyProfit).replace('.', ','), total: productSellingsMoney }, pix: { profit: String(pixProfit).replace('.', ','), total: productSellingsPix }, totalProfit: totalProfit.replace('.', ',') }
     }
 
     totalDeVendas() {

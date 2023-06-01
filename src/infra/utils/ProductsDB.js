@@ -17,6 +17,6 @@ module.exports = class ProductsDB {
 
     obterPreco(productId, type) {
         let data = this.carregarDados()
-        return data[type].products.find(p => p.id == productId)?.price || []
+        return data[type].products.find(p => p.id == productId)?.price || {}
     }
 }

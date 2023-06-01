@@ -15,6 +15,11 @@ module.exports = class extends eventStructure {
     run = (interaction) => {
         if (!interaction.isModalSubmit()) return
 
+        const paymentDictionary = {
+            'dinheiro': 'money',
+            'pix': 'pix'
+        }
+
         const backupChannel = interaction.guild.channels.cache.get(backupChannelId)
         const ticketsChannel = interaction.guild.channels.cache.get(ticketsChannelId)
         const paymentMethod = String(interaction.message.embeds[0].title)
@@ -23,14 +28,14 @@ module.exports = class extends eventStructure {
             interaction.update({ embeds: [interaction.client.config.Embeds.SUCCESS('**Ticket Registrado!**')], components: [] })
 
             enviarTicket(ticketsChannel, backupChannel, interaction, { ticketType: 1, paymentMethod: paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1) })
-            registrarTicket(interaction, { ticketType: 1, paymentMethod: paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1) })
+            registrarTicket(interaction, { ticketType: 1, paymentMethod: paymentDictionary[paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1)] })
         }
 
         if (productsArray.desiludidos.some(r => interaction.customId.replace('+', ' ').split(' ').includes(r))) {
             interaction.update({ embeds: [interaction.client.config.Embeds.SUCCESS('**Ticket Registrado!**')], components: [] })
 
             enviarTicket(ticketsChannel, backupChannel, interaction, { ticketType: 0, paymentMethod: paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1) })
-            registrarTicket(interaction, { ticketType: 0, paymentMethod: paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1) })
+            registrarTicket(interaction, { ticketType: 0, paymentMethod: paymentDictionary[paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1)] })
         }
     }
 }
