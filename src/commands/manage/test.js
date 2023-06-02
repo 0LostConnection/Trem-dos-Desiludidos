@@ -7,7 +7,8 @@ module.exports = class extends Command {
             description: 'Envia os botões.',
             disabled: false,
             default_member_permissions: Number(PermissionFlagsBits.ManageGuild),
-            dm_permission: false
+            dm_permission: false,
+            disabled: true
         })
     }
 

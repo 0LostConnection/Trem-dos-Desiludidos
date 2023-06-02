@@ -19,7 +19,7 @@ module.exports = class extends eventStructure {
                 break
             case 'product:done':
                 const shippingChannel = getChannel(channels.shippingChannelId)
-                shippingChannel.send({ embeds: interaction.message.embeds, components: [Buttons.productSent] })
+                shippingChannel.send({ content: '<@&1114199498986618881>', embeds: interaction.message.embeds, components: [Buttons.productSent] })
 
                 try {
                     interaction.message.delete()
@@ -39,7 +39,7 @@ module.exports = class extends eventStructure {
                 break
             case 'product:not-sent':
                 const productionChannel = getChannel(channels.productionChannelId)
-                productionChannel.send({ embeds: interaction.message.embeds, components: [Buttons.productDone] })
+                productionChannel.send({ content: '<@&1114199414546907157>', embeds: interaction.message.embeds, components: [Buttons.productDone] })
 
                 try {
                     interaction.message.delete()

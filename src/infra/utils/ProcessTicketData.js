@@ -159,7 +159,7 @@ module.exports = class ProcessTicketData {
                     ])
                     .setFooter({ text: `Correio Elegante` })
 
-                productionChannel.send({ embeds: [ticketEmbed], components: [Buttons.productDone] })
+                productionChannel.send({ content: '<@&1114199414546907157>', embeds: [ticketEmbed], components: [Buttons.productDone] })
                 backupChannel.send({ embeds: [ticketEmbed] })
                 break
         }
