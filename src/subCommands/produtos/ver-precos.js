@@ -6,7 +6,7 @@ const { Colors, Embeds } = require('../../../config')
 module.exports = async (client, interaction) => {
     const productId = interaction.options.getString('produto')
     const productIndex = new ParseProductJSON().findType(productId)
-    const productPrice = new ProductsDB().obterPreco(productId + '1', productIndex)
+    const productPrice = new ProductsDB().obterPreco(productId, productIndex)
 
     if (productPrice) {
         const pricesEmbed = new EmbedBuilder()

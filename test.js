@@ -17,11 +17,15 @@ const ids = new ParseProductJSON().getIdsArray()
 
 for (const [type, productsIds] of Object.entries(ids)) {
     for (const productId of productsIds) {
-        new ProductsDB('./json/products.json').alterarPreco(productId)
+        new ProductsDB('./json/products.json').alterarPreco(productId, 'pix', Number(0))
+        new ProductsDB('./json/products.json').alterarPreco(productId, 'money', Number(0))
+
     }
 
 }
  */
 
+/* 
 const ProductsDB = require('./src/infra/utils/ProductsDB')
 console.log(new ProductsDB('./json/products.json').alterarPreco('pirulito', 'pix', Number(1)))
+ */
