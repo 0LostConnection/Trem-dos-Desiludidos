@@ -75,7 +75,8 @@ module.exports = class ProcessTicketData {
         const productionChannel = getChannel(channels.productionChannelId)
         const backupChannel = getChannel(channels.backupChannelId)
 
-        let ticketEmbed = []
+        let ticketEmbed
+        let minimizedTicketEmbed
         switch (ticketType) {
             case 0:
                 const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
@@ -109,7 +110,10 @@ module.exports = class ProcessTicketData {
                         ])
                         .setFooter({ text: `Desiludidos` })
 
-                    sellersChannel.send({ embeds: [ticketEmbed], components: [Buttons.productSent, Buttons.productNotSent] })
+                    minimizedTicketEmbed = ticketEmbed.toJSON()
+                    minimizedTicketEmbed.footer.text = interaction.user.id
+
+                    sellersChannel.send({ embeds: [minimizedTicketEmbed], components: [Buttons.sellerProductSent, Buttons.sellerProductNotSent] })
                     backupChannel.send({ embeds: [ticketEmbed] })
                 }
                 break
@@ -149,7 +153,7 @@ module.exports = class ProcessTicketData {
                             "inline": true
                         },
                         {
-                            "name": "Mensagem",
+                            "name": "Mensagem + Observações",
                             "value": `\`${interaction.fields.getTextInputValue('mensagem')}\``
                         },
                         {
@@ -159,8 +163,11 @@ module.exports = class ProcessTicketData {
                     ])
                     .setFooter({ text: `Correio Elegante` })
 
-                productionChannel.send({ content: '<@&1114199414546907157>', embeds: [ticketEmbed], components: [Buttons.productDone] })
-                backupChannel.send({ embeds: [ticketEmbed] })
+                minimizedTicketEmbed = ticketEmbed.toJSON()
+                minimizedTicketEmbed.footer.text = interaction.user.id
+
+                productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })
+                backupChannel.send({ embeds: [ ticketEmbed] })
                 break
         }
     }
