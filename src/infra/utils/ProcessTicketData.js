@@ -64,17 +64,16 @@ module.exports = class ProcessTicketData {
         }
     }
 
-    enviarTicket(ticketsChannel, backupChannel, interaction, { ticketType, paymentMethod }) {
-        const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-        const { Colors } = require('../../../config')
+    enviarTicket(interaction, { ticketType, paymentMethod }) {
+        const { EmbedBuilder } = require('discord.js')
+        const { Colors, channels } = require('../../../config')
+        const Buttons = require('./buttons')
 
-        const deleteButton = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setCustomId('delete')
-                    .setStyle(ButtonStyle.Danger)
-                    .setLabel('Cancelar esse ticket!')
-            )
+        const getChannel = (channelId) => { return interaction.guild.channels.cache.get(channelId) }
+
+        const sellersChannel = getChannel(channels.sellersChannelId)
+        const productionChannel = getChannel(channels.productionChannelId)
+        const backupChannel = getChannel(channels.backupChannelId)
 
         let ticketEmbed = []
         switch (ticketType) {
@@ -110,7 +109,7 @@ module.exports = class ProcessTicketData {
                         ])
                         .setFooter({ text: `Desiludidos` })
 
-                    ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
+                    sellersChannel.send({ embeds: [ticketEmbed], components: [Buttons.productSent, Buttons.productNotSent] })
                     backupChannel.send({ embeds: [ticketEmbed] })
                 }
                 break
@@ -160,7 +159,7 @@ module.exports = class ProcessTicketData {
                     ])
                     .setFooter({ text: `Correio Elegante` })
 
-                ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
+                productionChannel.send({ embeds: [ticketEmbed], components: [Buttons.productDone] })
                 backupChannel.send({ embeds: [ticketEmbed] })
                 break
         }

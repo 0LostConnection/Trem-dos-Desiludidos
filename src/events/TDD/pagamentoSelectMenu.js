@@ -10,9 +10,11 @@ module.exports = class extends eventStructure {
         })
     }
 
-    run = (interaction) => {
+    run = async (interaction) => {
         if (!interaction.isStringSelectMenu()) return
         if (!['pagamento:desiludidos', 'pagamento:correio'].includes(interaction.customId)) return
+
+        await interaction.deferReply({ ephemeral: true })
 
         interaction.message.edit({ components: interaction.message.components })
 
@@ -29,7 +31,7 @@ module.exports = class extends eventStructure {
                     .setImage('https://i.imgur.com/cJgr8ci.png')
                     .setColor(Colors.dark.Purple)
 
-                interaction.reply({ embeds: [desiludidosEmbed], components: [desiludidosRow], ephemeral: true })
+                interaction.editReply({ embeds: [desiludidosEmbed], components: [desiludidosRow], ephemeral: true })
                 break
             case 'pagamento:correio':
                 const correioRow = new ActionRowBuilder()
@@ -39,7 +41,7 @@ module.exports = class extends eventStructure {
                     .setImage('https://i.imgur.com/VRtGv6S.png')
                     .setColor(Colors.custom.Love)
 
-                interaction.reply({ embeds: [correioEmbed], components: [correioRow], ephemeral: true })
+                interaction.editReply({ embeds: [correioEmbed], components: [correioRow], ephemeral: true })
                 break
         }
     }
