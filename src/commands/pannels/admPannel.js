@@ -30,6 +30,11 @@ module.exports = class extends Command {
                             .setDescription('Lucro da loja do correio elegante')
                             .setEmoji('💘'),
                         new StringSelectMenuOptionBuilder()
+                            .setValue('adm:lucro-total')
+                            .setLabel('Lucro Total')
+                            .setDescription('Lucro das duas lojas')
+                            .setEmoji('🤑'),
+                        new StringSelectMenuOptionBuilder()
                             .setValue('adm:vendas-por-vendedor')
                             .setLabel('Vendas por vendedor')
                             .setDescription('Número de vendas por vendedor')

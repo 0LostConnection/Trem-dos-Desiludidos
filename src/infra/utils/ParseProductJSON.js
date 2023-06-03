@@ -49,5 +49,7 @@ module.exports = class parseProductJSON {
         return idsArrays
     }
 
-
+    findType(productId) {
+        return this.productsJson.findIndex((typeObject) => typeObject.products.find(product => product.id == productId))
+    }
 }

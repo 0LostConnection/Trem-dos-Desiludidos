@@ -1,5 +1,5 @@
 const eventStructure = require(`../../infra/structures/EventStructure`)
-const { lucroCorreio, lucroDesiludidos, vendasPorProduto, vendasPorVendedor, vendasTotal, listarVendedores } = require('../../infra/utils/admPannelFunctions')
+const { lucroCorreio, lucroDesiludidos, vendasPorProduto, vendasPorVendedor, vendasTotal, listarVendedores, lucroTotal } = require('../../infra/utils/admPannelFunctions')
 
 module.exports = class extends eventStructure {
     constructor(client) {
@@ -13,7 +13,7 @@ module.exports = class extends eventStructure {
         if (interaction.customId !== 'adm') return
 
         await interaction.deferReply({ ephemeral: true })
-        
+
         await interaction.message.edit({ components: interaction.message.components })
 
         switch (interaction.values[0]) {
@@ -22,6 +22,9 @@ module.exports = class extends eventStructure {
                 break
             case 'adm:lucro-correio':
                 lucroCorreio(interaction)
+                break
+            case 'adm:lucro-total':
+                lucroTotal(interaction)
                 break
             case 'adm:vendas-por-vendedor':
                 vendasPorVendedor(interaction)

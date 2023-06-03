@@ -3,7 +3,7 @@ const productsArray = new ParseProductJSON().getIdsArray()
 const ProcessTicketData = require('../../infra/utils/ProcessTicketData')
 const { enviarTicket, registrarTicket } = new ProcessTicketData()
 const eventStructure = require(`../../infra/structures/EventStructure`)
-const { ticketsChannelId, backupChannelId } = require('../../../config')
+const { Embeds } = require('../../../config')
 
 module.exports = class extends eventStructure {
     constructor(client) {
@@ -12,36 +12,30 @@ module.exports = class extends eventStructure {
         })
     }
 
-    run = async (interaction) => {
+    run = (interaction) => {
         if (!interaction.isModalSubmit()) return
 
-        const backupChannel = interaction.guild.channels.cache.get(backupChannelId)
-        const ticketsChannel = interaction.guild.channels.cache.get(ticketsChannelId)
+        const paymentDictionary = {
+            'dinheiro': 'money',
+            'pix': 'pix'
+        }
+
+        const paymentMethod = String(interaction.message.embeds[0].title)
 
         if (productsArray.correio.includes(interaction.customId)) {
-            try {
-                interaction.message.edit({ components: interaction.message.components })
-            } catch (error) {
-                throw error
-            }
+            interaction.update({ embeds: [Embeds.SUCCESS('**Ticket Registrado!**')], components: [] })
 
-            enviarTicket(ticketsChannel, backupChannel, interaction, 1)
-            registrarTicket(interaction, 1)
-
-            return interaction.deferUpdate()
+            enviarTicket(interaction, { ticketType: 1, paymentMethod: paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1) })
+            registrarTicket(interaction, { ticketType: 1, paymentMethod: paymentDictionary[paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1)] })
+            return
         }
 
         if (productsArray.desiludidos.some(r => interaction.customId.replace('+', ' ').split(' ').includes(r))) {
-            try {
-                interaction.message.edit({ components: interaction.message.components })
-            } catch (error) {
-                throw error
-            }
+            interaction.update({ embeds: [Embeds.SUCCESS('**Ticket Registrado!**')], components: [] })
 
-            enviarTicket(ticketsChannel, backupChannel, interaction, 0)
-            registrarTicket(interaction, 0)
-
-            return interaction.deferUpdate()
+            enviarTicket(interaction, { ticketType: 0, paymentMethod: paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1) })
+            registrarTicket(interaction, { ticketType: 0, paymentMethod: paymentDictionary[paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1)] })
+            return
         }
     }
 }

@@ -13,16 +13,18 @@ const lucroCorreio = async (interaction) => {
 
     let fields = []
     for (const productId of productsIdsArray.correio) {
-        const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId, 1)
+        const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId)
 
-        fields.push({ name: `\`${productsDictionary[productId]}\``, value: `**Lucro mínimo:**\n\`R$${productProfit.min}\`\n**Lucro máximo:**\n\`R$${productProfit.max}\`\n**Total de vendas:**\n\`${productProfit.total}\`\n‎`, inline: true })
+        fields.push({ name: `__${productsDictionary[productId]}__`, value: `**nº - Pix:**\n\`${productProfit.pix.total}\` - \`R$${productProfit.pix.profit}\`\n**nº - Dinheiro:**\n\`${productProfit.money.total}\` - \`R$${productProfit.money.profit}\`\n**Lucro Total:**\n\`R$${productProfit.totalProfit}\`\n‎`, inline: true })
     }
 
     const embed = new EmbedBuilder()
         .setColor(Colors.custom.Love)
         .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
-        .setDescription('***Lucro mínimo:*** *Calculado utilizando o preço do produto pelo pix.*\n***Lucro máximo:*** *Calculado utilizando o preço do produto por dinheiro em espécie.*\n‎')
+        .setTitle('Lucro Correio Elegante')
         .setFields(fields)
+        .setImage('https://i.imgur.com/aPOaaYh.png')
+        .setFooter({ text: 'nº - Número de vendas registradas com o método de pagamento' })
 
     await interaction.editReply({ embeds: [embed], ephemeral: true })
 }
@@ -42,16 +44,57 @@ const lucroDesiludidos = async (interaction) => {
 
     let fields = []
     for (const productId of productsIdsArray.desiludidos) {
-        const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId, 0)
+        const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId)
 
-        fields.push({ name: `\`${productsDictionary[productId]}\``, value: `**Lucro mínimo:**\n\`R$${productProfit.min}\`\n**Lucro máximo:**\n\`R$${productProfit.max}\`\n**Total de vendas:**\n\`${productProfit.total}\`\n‎`, inline: true })
+        fields.push({ name: `__${productsDictionary[productId]}__`, value: `**nº - Pix:**\n\`${productProfit.pix.total}\` - \`R$${productProfit.pix.profit}\`\n**nº - Dinheiro:**\n\`${productProfit.money.total}\` - \`R$${productProfit.money.profit}\`\n**Lucro Total:**\n\`R$${productProfit.totalProfit}\`\n‎`, inline: true })
     }
 
     const embed = new EmbedBuilder()
         .setColor(Colors.dark.Purple)
         .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
-        .setDescription('***Lucro mínimo:*** *Calculado utilizando o preço do produto pelo pix.*\n***Lucro máximo:*** *Calculado utilizando o preço do produto por dinheiro em espécie.*\n‎')
+        .setTitle('Lucro Desiludidos')
         .setFields(fields)
+        .setImage('https://i.imgur.com/aPOaaYh.png')
+        .setFooter({ text: 'nº - Número de vendas registradas com o método de pagamento' })
+
+    await interaction.editReply({ embeds: [embed], ephemeral: true })
+}
+
+const lucroTotal = async (interaction) => {
+    const typeDictionary = {
+        'correio': 1,
+        'desiludidos': 0
+    }
+
+    const { EmbedBuilder } = require('discord.js')
+    const { Colors } = require('../../../config')
+
+    const TicketsDB = require('../../database/TicketsDB')
+    const ticketsData = await new TicketsDB().obterTickets()
+
+    const ProcessTicketData = require('./ProcessTicketData')
+
+    const ParseProductJSON = require('./ParseProductJSON')
+    const productsIdsArray = new ParseProductJSON().getIdsArray()
+
+    let productsProfit = []
+    for (const [productType] of Object.entries(productsIdsArray)) {
+        for (const productId of productsIdsArray[productType]) {
+            const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId, typeDictionary[productType])
+            if (productProfit.totalProfit == 0) continue
+            productsProfit.push(productProfit.totalProfit.replace(',', '.'))
+        }
+    }
+
+    let totalProfit = String(productsProfit.reduce(function (x, y) {
+        return Number(x) + Number(y)
+    }, 0))
+
+    const embed = new EmbedBuilder()
+        .setColor(Colors.custom.Emerald)
+        .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
+        .setTitle('Lucro Total')
+        .setDescription(`\`R$${totalProfit.replace('.', ',')}\``)
 
     await interaction.editReply({ embeds: [embed], ephemeral: true })
 }
@@ -68,6 +111,7 @@ const vendasPorProduto = async (interaction) => {
 
     const embed = new EmbedBuilder()
         .setColor(Colors.clear.Yellow)
+        .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
         .setTitle('Vendas por produto')
         .setDescription(`${sellingsArray.length ? sellingsArray.join('\n') : '```NADA```'}`)
 
@@ -86,6 +130,7 @@ const vendasPorVendedor = async (interaction) => {
 
     const embed = new EmbedBuilder()
         .setColor(Colors.clear.Yellow)
+        .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
         .setTitle('Vendas por vendedor')
         .setDescription(`${sellersArray.length ? sellersArray.join('\n') : '```NADA```'}`)
 
@@ -104,6 +149,7 @@ const vendasTotal = async (interaction) => {
 
     const embed = new EmbedBuilder()
         .setColor(Colors.clear.Yellow)
+        .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
         .setTitle('Total de vendas')
         .setDescription(`\`${totalAmount}\``)
 
@@ -125,10 +171,11 @@ const listarVendedores = (interaction) => {
 
     const embed = new EmbedBuilder()
         .setColor(Colors.clear.Yellow)
+        .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL() })
         .setTitle('Vendedores')
         .setDescription(`${sellersArray.length ? sellersArray.join('\n') : '```NADA```'}`)
 
     interaction.editReply({ embeds: [embed], ephemeral: true })
 }
 
-module.exports = { lucroCorreio, lucroDesiludidos, vendasPorProduto, vendasPorVendedor, vendasTotal, listarVendedores }
+module.exports = { lucroCorreio, lucroDesiludidos, lucroTotal, vendasPorProduto, vendasPorVendedor, vendasTotal, listarVendedores }

@@ -29,8 +29,8 @@
                 "description": "Fini",
                 "id": "fini",
                 "price": {
-                    "money": "3,00",
-                    "pix": "2,50"
+                    "money": "2,50",
+                    "pix": "2,00"
                 }
             },
             {
@@ -39,7 +39,7 @@
                 "description": "Brigadeiro",
                 "id": "brigadeiro",
                 "price": {
-                    "money": "3,00",
+                    "money": "3,50",
                     "pix": "3,00"
                 }
             }

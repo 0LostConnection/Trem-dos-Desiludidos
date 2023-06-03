@@ -41,6 +41,7 @@ module.exports = class extends Database {
                 {
                     type: doc.type,
                     sellerId: doc.sellerId,
+                    paymentMethod: doc.paymentMethod,
                     buyer: doc.buyer,
                     receiver: doc.receiver.name ? doc.receiver : undefined,
                     product: doc.product,
@@ -48,7 +49,6 @@ module.exports = class extends Database {
                 }
             )
         }
-
         await super.disconnect()
         return ticketsArray
     }
