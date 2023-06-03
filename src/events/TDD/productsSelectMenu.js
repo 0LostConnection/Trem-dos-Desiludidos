@@ -1,5 +1,5 @@
 const eventStructure = require(`../../infra/structures/EventStructure`)
-const { ModalBuilder } = require('discord.js');
+const { ModalBuilder, TextInputStyle} = require('discord.js');
 const createModalComponent = require('../../infra/utils/createModalComponent')
 
 module.exports = class extends eventStructure {
@@ -42,8 +42,9 @@ module.exports = class extends eventStructure {
                     }),
                     createModalComponent({
                         customId: 'mensagem',
-                        required: false,
-                        label: 'Mensagem'
+                        required: true,
+                        label: 'Mensagem + Observações',
+                        style: TextInputStyle.Paragraph
                     })
                 )
 

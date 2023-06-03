@@ -35,7 +35,7 @@ module.exports = class extends Command {
                             .setEmoji('<:pix:1113466593377267773>'),
                         new StringSelectMenuOptionBuilder()
                             .setLabel('Dinheiro')
-                            .setValue('pagamento:dinheiro')
+                            .setValue('pagamento:money')
                             .setEmoji('💵')
                     )
             )

@@ -13,7 +13,10 @@ const ticketSchema = new Schema(
             name: String,
             number: String
         },
-        product: String,
+        product: {
+            id: String,
+            price: String
+        },
         message: String
     },
     {

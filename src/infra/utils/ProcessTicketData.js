@@ -28,7 +28,10 @@ module.exports = class ProcessTicketData {
                                 name: interaction.fields.getTextInputValue('comprador'),
                                 number: interaction.fields.getTextInputValue('comprador:serie')
                             },
-                            product: product
+                            product: {
+                                id: product,
+                                price: productsDB.obterPreco(product, 0)[paymentMethod]
+                            }
                         }
                     )
                 }
@@ -49,7 +52,10 @@ module.exports = class ProcessTicketData {
                             name: interaction.fields.getTextInputValue('destinatario'),
                             number: interaction.fields.getTextInputValue('destinatario:serie')
                         },
-                        product: interaction.customId,
+                        product: {
+                            id: interaction.customId,
+                            price: productsDB.obterPreco(interaction.customId, 1)[paymentMethod]
+                        },
                         message: interaction.fields.getTextInputValue('mensagem')
                     }
                 )
@@ -58,19 +64,19 @@ module.exports = class ProcessTicketData {
         }
     }
 
-    enviarTicket(ticketsChannel, backupChannel, interaction, { ticketType, paymentMethod }) {
-        const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-        const { Colors } = require('../../../config')
+    enviarTicket(interaction, { ticketType, paymentMethod }) {
+        const { EmbedBuilder } = require('discord.js')
+        const { Colors, channels } = require('../../../config')
+        const Buttons = require('./buttons')
 
-        const deleteButton = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setCustomId('delete')
-                    .setStyle(ButtonStyle.Danger)
-                    .setLabel('Cancelar esse ticket!')
-            )
+        const getChannel = (channelId) => { return interaction.guild.channels.cache.get(channelId) }
 
-        let ticketEmbed = []
+        const sellersChannel = getChannel(channels.sellersChannelId)
+        const productionChannel = getChannel(channels.productionChannelId)
+        const backupChannel = getChannel(channels.backupChannelId)
+
+        let ticketEmbed
+        let minimizedTicketEmbed
         switch (ticketType) {
             case 0:
                 const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
@@ -99,13 +105,15 @@ module.exports = class ProcessTicketData {
                             },
                             {
                                 "name": "Método de pagamento",
-                                "value": `\`${paymentMethod}\``
+                                "value": `\`${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}\``
                             }
                         ])
-                        .setFooter({ text: 'Desiludidos' })
+                        .setFooter({ text: `Desiludidos` })
 
+                    minimizedTicketEmbed = ticketEmbed.toJSON()
+                    minimizedTicketEmbed.footer.text = interaction.user.id
 
-                    ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
+                    sellersChannel.send({ embeds: [minimizedTicketEmbed], components: [Buttons.sellerProductSent, Buttons.sellerProductNotSent] })
                     backupChannel.send({ embeds: [ticketEmbed] })
                 }
                 break
@@ -145,17 +153,21 @@ module.exports = class ProcessTicketData {
                             "inline": true
                         },
                         {
-                            "name": "Mensagem",
+                            "name": "Mensagem + Observações",
                             "value": `\`${interaction.fields.getTextInputValue('mensagem')}\``
                         },
                         {
                             "name": "Método de pagamento",
-                            "value": `\`${paymentMethod}\``
+                            "value": `\`${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}\``
                         }
                     ])
-                    .setFooter({ text: 'Correio' })
-                ticketsChannel.send({ embeds: [ticketEmbed], components: [deleteButton] })
-                backupChannel.send({ embeds: [ticketEmbed] })
+                    .setFooter({ text: `Correio Elegante` })
+
+                minimizedTicketEmbed = ticketEmbed.toJSON()
+                minimizedTicketEmbed.footer.text = interaction.user.id
+
+                productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })
+                backupChannel.send({ embeds: [ ticketEmbed] })
                 break
         }
     }
@@ -184,11 +196,11 @@ module.exports = class ProcessTicketData {
         let sellingData = {}
 
         for (const [index, ticket] of Object.entries(this.ticketsData)) {
-            sellingData[ticket.product] = 0
+            sellingData[ticket.product.id] = 0
         }
 
         for (const [index, ticket] of Object.entries(this.ticketsData)) {
-            sellingData[ticket.product] += 1
+            sellingData[ticket.product.id] += 1
         }
 
         for (const [productId, totalSales] of Object.entries(sellingData)) {
@@ -198,26 +210,24 @@ module.exports = class ProcessTicketData {
         return sellingsArray
     }
 
-    calcularLucro(productId, type) {
-        const productPrice = productsDB.obterPreco(productId, type)
-
-        let productSellingsPix = 0
+    calcularLucro(productId) {
+        let moneyProfit = 0
+        let pixProfit = 0
         let productSellingsMoney = 0
+        let productSellingsPix = 0
 
         for (const [index, ticket] of Object.entries(this.ticketsData)) {
-            if (ticket.product === productId && ticket.paymentMethod === 'pix') {
-                productSellingsPix += 1
-            }
-            if (ticket.product === productId && ticket.paymentMethod === 'dinheiro') {
+            if (ticket.product.id === productId && ticket.paymentMethod === 'money') {
+                moneyProfit += Number(String(ticket.product.price.replace(',', '.')))
                 productSellingsMoney += 1
             }
+            if (ticket.product.id === productId && ticket.paymentMethod === 'pix') {
+                pixProfit += Number(ticket.product.price.replace(',', '.'))
+                productSellingsPix = 0
+            }
         }
-
-        const moneyProfit = String(productSellingsMoney * Number(productPrice.money.replace(',', '.')))
-        const pixProfit = String(productSellingsPix * Number(productPrice.pix.replace(',', '.')))
         const totalProfit = String(Number(moneyProfit) + Number(pixProfit))
-
-        return { money: { profit: moneyProfit.replace('.', ','), total: productSellingsMoney }, pix: { profit: pixProfit.replace('.', ','), total: productSellingsPix }, totalProfit: totalProfit.replace('.', ',') }
+        return { money: { profit: String(moneyProfit).replace('.', ','), total: productSellingsMoney }, pix: { profit: String(pixProfit).replace('.', ','), total: productSellingsPix }, totalProfit: totalProfit.replace('.', ',') }
     }
 
     totalDeVendas() {

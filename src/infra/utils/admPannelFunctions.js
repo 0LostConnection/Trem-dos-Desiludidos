@@ -13,7 +13,7 @@ const lucroCorreio = async (interaction) => {
 
     let fields = []
     for (const productId of productsIdsArray.correio) {
-        const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId, 1)
+        const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId)
 
         fields.push({ name: `__${productsDictionary[productId]}__`, value: `**nº - Pix:**\n\`${productProfit.pix.total}\` - \`R$${productProfit.pix.profit}\`\n**nº - Dinheiro:**\n\`${productProfit.money.total}\` - \`R$${productProfit.money.profit}\`\n**Lucro Total:**\n\`R$${productProfit.totalProfit}\`\n‎`, inline: true })
     }
@@ -44,7 +44,7 @@ const lucroDesiludidos = async (interaction) => {
 
     let fields = []
     for (const productId of productsIdsArray.desiludidos) {
-        const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId, 0)
+        const productProfit = new ProcessTicketData(ticketsData).calcularLucro(productId)
 
         fields.push({ name: `__${productsDictionary[productId]}__`, value: `**nº - Pix:**\n\`${productProfit.pix.total}\` - \`R$${productProfit.pix.profit}\`\n**nº - Dinheiro:**\n\`${productProfit.money.total}\` - \`R$${productProfit.money.profit}\`\n**Lucro Total:**\n\`R$${productProfit.totalProfit}\`\n‎`, inline: true })
     }
