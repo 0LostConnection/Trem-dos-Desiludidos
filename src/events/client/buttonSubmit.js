@@ -25,9 +25,11 @@ module.exports = class extends eventStructure {
                 const shippingChannel = getChannel(channels.shippingChannelId)
 
                 let minimizedTicketEmbed = interaction.message.embeds[0]
-                minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Comprador'), 1)
-                minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
-
+                if (interaction.message.embeds[0].color === 15895712) {
+                    minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Comprador'), 1)
+                    minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
+                }
+                
                 shippingChannel.send({ content: '<@&1114199498986618881>', embeds: [minimizedTicketEmbed], components: [Buttons.productSent] })
 
                 try {
