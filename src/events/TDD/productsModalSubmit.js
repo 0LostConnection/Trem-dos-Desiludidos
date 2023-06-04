@@ -20,9 +20,10 @@ module.exports = class extends eventStructure {
             'pix': 'pix'
         }
 
-        const paymentMethod = String(interaction.message.embeds[0].title)
+        let paymentMethod
 
         if (productsArray.correio.includes(interaction.customId)) {
+            paymentMethod = String(interaction.message.embeds[0].title)
             interaction.update({ embeds: [Embeds.SUCCESS('**Ticket Registrado!**')], components: [] })
 
             enviarTicket(interaction, { ticketType: 1, paymentMethod: paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1) })
@@ -31,6 +32,7 @@ module.exports = class extends eventStructure {
         }
 
         if (productsArray.desiludidos.some(r => interaction.customId.replace('+', ' ').split(' ').includes(r))) {
+            paymentMethod = String(interaction.message.embeds[0].title)
             interaction.update({ embeds: [Embeds.SUCCESS('**Ticket Registrado!**')], components: [] })
 
             enviarTicket(interaction, { ticketType: 0, paymentMethod: paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1) })

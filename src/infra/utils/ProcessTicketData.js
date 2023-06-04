@@ -113,7 +113,7 @@ module.exports = class ProcessTicketData {
                     minimizedTicketEmbed = ticketEmbed.toJSON()
                     minimizedTicketEmbed.footer.text = interaction.user.id
 
-                    sellersChannel.send({ embeds: [minimizedTicketEmbed], components: [Buttons.sellerProductSent, Buttons.sellerProductNotSent] })
+                    sellersChannel.send({ content: `<@${interaction.user.id}>`, embeds: [minimizedTicketEmbed], components: [Buttons.sellerProductSent, Buttons.sellerProductNotSent] })
                     backupChannel.send({ embeds: [ticketEmbed] })
                 }
                 break
@@ -167,7 +167,7 @@ module.exports = class ProcessTicketData {
                 minimizedTicketEmbed.footer.text = interaction.user.id
 
                 productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })
-                backupChannel.send({ embeds: [ ticketEmbed] })
+                backupChannel.send({ embeds: [ticketEmbed] })
                 break
         }
     }
