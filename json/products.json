@@ -39,8 +39,8 @@
                 "description": "Brigadeiro",
                 "id": "brigadeiro",
                 "price": {
-                    "money": "3,50",
-                    "pix": "3,00"
+                    "money": "3,00",
+                    "pix": "2,50"
                 }
             }
         ]
