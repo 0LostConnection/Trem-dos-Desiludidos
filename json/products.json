@@ -10,7 +10,7 @@
                 "id": "pirulito",
                 "price": {
                     "money": "0,75",
-                    "pix": "0,50"
+                    "pix": "0,75"
                 }
             },
             {
@@ -20,7 +20,7 @@
                 "id": "bombom",
                 "price": {
                     "money": "2,50",
-                    "pix": "2,00"
+                    "pix": "2,50"
                 }
             },
             {
@@ -30,7 +30,7 @@
                 "id": "fini",
                 "price": {
                     "money": "2,50",
-                    "pix": "2,00"
+                    "pix": "2,50"
                 }
             },
             {
@@ -40,7 +40,7 @@
                 "id": "brigadeiro",
                 "price": {
                     "money": "3,00",
-                    "pix": "2,50"
+                    "pix": "3,00"
                 }
             }
         ]
@@ -66,7 +66,7 @@
                 "id": "bilhete",
                 "price": {
                     "money": "1,00",
-                    "pix": "0,75"
+                    "pix": "1,00"
                 }
             },
             {
@@ -96,7 +96,7 @@
                 "id": "bilhete+bombom+pirulito",
                 "price": {
                     "money": "3,75",
-                    "pix": "3,50"
+                    "pix": "3,75"
                 }
             },
             {
@@ -126,7 +126,7 @@
                 "id": "dobradura+brigadeiro+fini",
                 "price": {
                     "money": "5,50",
-                    "pix": "5,00"
+                    "pix": "5,50"
                 }
             }
         ]
