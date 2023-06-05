@@ -1,6 +1,6 @@
 const Command = require('../../infra/structures/CommandStructure')
 const { PermissionFlagsBits, EmbedBuilder } = require('discord.js')
-const { Colors, channels } = require('../../../config')
+const { Colors, channels, Embeds } = require('../../../config')
 const ParseProductJSON = require('../../infra/utils/ParseProductJSON')
 const productsChoices = new ParseProductJSON().createProductsChoices()
 const productsDictionary = new ParseProductJSON().getDictionary()
@@ -223,6 +223,7 @@ module.exports = class extends Command {
 
                 // Sending embed to backup channel
                 backupChannel.send({ embeds: [ticketEmbed] })
+                interaction.reply({ embeds: [Embeds.SUCCESS('**Ticket Registrado!**')], ephemeral: true })
                 break
             case 1:
                 // Specifg Selling Details
@@ -309,6 +310,7 @@ module.exports = class extends Command {
 
                 // Sending embed to backup channel
                 backupChannel.send({ embeds: [ticketEmbed] })
+                interaction.reply({ embeds: [Embeds.SUCCESS('**Ticket Registrado!**')], ephemeral: true })
                 break
         }
 
