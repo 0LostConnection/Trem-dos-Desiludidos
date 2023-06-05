@@ -5,6 +5,6 @@ const a = async () => {
     const tk = new TicketsDB()
     const data = await tk.obterTickets()
     const { writeFileSync } = require('fs')
-    writeFileSync(`${process.cwd()}/tickets.json`, JSON.stringify(data, null, 4))
+    writeFileSync(`${process.cwd()}/json/tickets.json`, JSON.stringify(data, null, 4))
 }
 a()
