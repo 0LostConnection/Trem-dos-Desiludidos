@@ -108,4 +108,4 @@ config.json
 .vscode
 
 # Custom
-3B
+/json/tickets.json
