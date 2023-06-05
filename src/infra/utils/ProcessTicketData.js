@@ -165,6 +165,8 @@ module.exports = class ProcessTicketData {
 
                 minimizedTicketEmbed = ticketEmbed.toJSON()
                 minimizedTicketEmbed.footer.text = interaction.user.id
+                minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Comprador'), 1)
+                minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
 
                 productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })
                 backupChannel.send({ embeds: [ticketEmbed] })

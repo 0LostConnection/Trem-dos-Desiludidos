@@ -303,7 +303,9 @@ module.exports = class extends Command {
                 // Edit embed details
                 minimizedTicketEmbed = ticketEmbed.toJSON()
                 minimizedTicketEmbed.footer.text = interaction.user.id
-
+                minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Comprador'), 1)
+                minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
+                
                 // Sending modifield embed to sellers channel
                 const productionChannel = getChannel(channels.productionChannelId)
                 productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })

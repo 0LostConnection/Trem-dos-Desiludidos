@@ -6,7 +6,8 @@ const { Colors } = require('../../../config')
 module.exports = class extends eventStructure {
     constructor(client) {
         super(client, {
-            name: 'interactionCreate'
+            name: 'interactionCreate',
+            disabled: false
         })
     }
 
