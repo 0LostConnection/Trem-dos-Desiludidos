@@ -208,7 +208,7 @@ module.exports = class extends Command {
                         },
                         {
                             "name": "Método de pagamento",
-                            "value": `\`${paymentDictionary[paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)]}\``
+                            "value": `\`${paymentDictionary[paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)]} R$${product.price}\``
                         }
                     ])
                     .setFooter({ text: `Desiludidos` })
@@ -295,7 +295,7 @@ module.exports = class extends Command {
                         },
                         {
                             "name": "Método de pagamento",
-                            "value": `\`${paymentDictionary[paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)]}\``
+                            "value": `\`${paymentDictionary[paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)]} R$${product.price}\``
                         }
                     ])
                     .setFooter({ text: `Desiludidos` })
