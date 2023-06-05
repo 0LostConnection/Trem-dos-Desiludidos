@@ -64,7 +64,7 @@ module.exports = class ProcessTicketData {
         }
     }
 
-    enviarTicket(interaction, { ticketType, paymentMethod }) {
+    async enviarTicket(interaction, { ticketType, paymentMethod }) {
         const { EmbedBuilder } = require('discord.js')
         const { Colors, channels } = require('../../../config')
         const Buttons = require('./buttons')
@@ -109,12 +109,11 @@ module.exports = class ProcessTicketData {
                             }
                         ])
                         .setFooter({ text: `Desiludidos` })
-
+                    await backupChannel.send({ embeds: [ticketEmbed] })
                     minimizedTicketEmbed = ticketEmbed.toJSON()
                     minimizedTicketEmbed.footer.text = interaction.user.id
 
                     sellersChannel.send({ content: `<@${interaction.user.id}>`, embeds: [minimizedTicketEmbed], components: [Buttons.sellerProductSent, Buttons.sellerProductNotSent] })
-                    backupChannel.send({ embeds: [ticketEmbed] })
                 }
                 break
 
@@ -162,6 +161,7 @@ module.exports = class ProcessTicketData {
                         }
                     ])
                     .setFooter({ text: `Correio Elegante` })
+                await backupChannel.send({ embeds: [ticketEmbed] })
 
                 minimizedTicketEmbed = ticketEmbed.toJSON()
                 minimizedTicketEmbed.footer.text = interaction.user.id
@@ -169,7 +169,6 @@ module.exports = class ProcessTicketData {
                 minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
 
                 productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })
-                backupChannel.send({ embeds: [ticketEmbed] })
                 break
         }
     }

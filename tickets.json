@@ -1,0 +1,646 @@
+[
+    {
+        "type": 1,
+        "sellerId": "835287305324855327",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "Murilo Tavares",
+            "number": "4° A do fundamental "
+        },
+        "receiver": {
+            "name": "Eliane",
+            "number": "2° A do fundamental "
+        },
+        "product": {
+            "id": "bilhete+bombom",
+            "price": "3,00"
+        },
+        "message": "Te amo muito\nobs: anônimo "
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Antônio",
+            "number": "3ºB EM"
+        },
+        "receiver": {
+            "name": "Zara",
+            "number": "3ºB EM"
+        },
+        "product": {
+            "id": "bilhete+bombom",
+            "price": "4"
+        },
+        "message": "Quanto tempo o coração leva pra saber? Que sinônimo de amar é sofrer. No aroma de amores pode haver espinhos. Quem pode dizer onde a felicidade está? Obs: Anônimo e Escandaloso"
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Antônio",
+            "number": "3ºB EM"
+        },
+        "receiver": {
+            "name": "Gabriel",
+            "number": "3ºB EM"
+        },
+        "product": {
+            "id": "bilhete+bombom",
+            "price": "4"
+        },
+        "message": "Já pensou em dar uma chance para alguém MAIOR que você? Obs: Anônimo e Escandaloso"
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Antônio",
+            "number": "3ºB EM"
+        },
+        "receiver": {
+            "name": "Antonnela",
+            "number": "7ºA"
+        },
+        "product": {
+            "id": "bilhete+bombom",
+            "price": "4"
+        },
+        "message": "Nossa amizade é tão grande que nem a morte pode nos separar. Obs: Anônimo e Escandaloso"
+    },
+    {
+        "type": 1,
+        "sellerId": "835287305324855327",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Mariana",
+            "number": "8° C"
+        },
+        "receiver": {
+            "name": "Fernanda Santiago ",
+            "number": "8°C"
+        },
+        "product": {
+            "id": "bilhete+bombom",
+            "price": "3,00"
+        },
+        "message": "Feliz aniversário santiago, te amo 🤍\nobs: anônimo, pediu para entregar na sala"
+    },
+    {
+        "type": 1,
+        "sellerId": "495282783590285322",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "vinicius Prates",
+            "number": "6 B"
+        },
+        "receiver": {
+            "name": "Rafaela Felix",
+            "number": "6 B"
+        },
+        "product": {
+            "id": "bilhete+brigadeiro+pirulito",
+            "price": "4,00"
+        },
+        "message": "Sem cartinha"
+    },
+    {
+        "type": 1,
+        "sellerId": "704115017804546129",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "yasmin",
+            "number": "8 ano"
+        },
+        "receiver": {
+            "name": "matheus",
+            "number": "8 C"
+        },
+        "product": {
+            "id": "bilhete+brigadeiro+pirulito",
+            "price": "4,00"
+        },
+        "message": "Uma mensagem romantoca e bem poetica\nobs: meio longa\n"
+    },
+    {
+        "type": 1,
+        "sellerId": "704115017804546129",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "Yasmim",
+            "number": "8°B"
+        },
+        "receiver": {
+            "name": "Luana",
+            "number": "8°B"
+        },
+        "product": {
+            "id": "bilhete",
+            "price": "1,00"
+        },
+        "message": "Cantada bem direta "
+    },
+    {
+        "type": 1,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "livia",
+            "number": "8º B"
+        },
+        "receiver": {
+            "name": "stella ",
+            "number": "8º B"
+        },
+        "product": {
+            "id": "bilhete+pirulito",
+            "price": "1,50"
+        },
+        "message": "“se fosse boa mesmo não era trocada por todos”\nanônimo - escandaloso \n"
+    },
+    {
+        "type": 1,
+        "sellerId": "495282783590285322",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Júlia ",
+            "number": "1 A "
+        },
+        "receiver": {
+            "name": "Mariani_Sompaio",
+            "number": "9 B"
+        },
+        "product": {
+            "id": "direct",
+            "price": "0,25"
+        },
+        "message": "voce e a melhor namorada do mundo, muito obrigada por ser essa mulher incrível e eu te amo muito muito muito"
+    },
+    {
+        "type": 1,
+        "sellerId": "495282783590285322",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Julia ",
+            "number": "1 A"
+        },
+        "receiver": {
+            "name": "Mariana Guedes",
+            "number": "1 A"
+        },
+        "product": {
+            "id": "bilhete",
+            "price": "1,00"
+        },
+        "message": "Eu te amo muito meio metro e um biscoito"
+    },
+    {
+        "type": 1,
+        "sellerId": "495282783590285322",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Julia",
+            "number": "1 A"
+        },
+        "receiver": {
+            "name": "Sabrina Barufi",
+            "number": "1 A"
+        },
+        "product": {
+            "id": "bilhete",
+            "price": "1,00"
+        },
+        "message": "Eu te amo coisa estressada"
+    },
+    {
+        "type": 1,
+        "sellerId": "835287305324855327",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Júlia ",
+            "number": "8° B"
+        },
+        "receiver": {
+            "name": "Yasmis",
+            "number": "8° B"
+        },
+        "product": {
+            "id": "bilhete+bombom+pirulito",
+            "price": "3,50"
+        },
+        "message": "Seu sorriso e seu cabelo são os mais bonitos dessa escola\nobs: anônimo "
+    },
+    {
+        "type": 1,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "livia",
+            "number": "professor"
+        },
+        "receiver": {
+            "name": "Elias",
+            "number": "professor"
+        },
+        "product": {
+            "id": "dobradura+brigadeiro+fini",
+            "price": "5,50"
+        },
+        "message": "você é o meu eterno amor\nnome (não anônimo)- escandaloso"
+    },
+    {
+        "type": 1,
+        "sellerId": "495282783590285322",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Julia",
+            "number": "1 A"
+        },
+        "receiver": {
+            "name": " Gaby (Só tem uma na sala, segundo ela)",
+            "number": "1 A"
+        },
+        "product": {
+            "id": "bilhete",
+            "price": "1,00"
+        },
+        "message": "Eu te amo loirinha perfeita"
+    },
+    {
+        "type": 0,
+        "sellerId": "495282783590285322",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "maria luiza",
+            "number": "6 B"
+        },
+        "product": {
+            "id": "pirulito",
+            "price": "0,75"
+        }
+    },
+    {
+        "type": 0,
+        "sellerId": "495282783590285322",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "Barbara Silva",
+            "number": "6 B"
+        },
+        "product": {
+            "id": "pirulito",
+            "price": "0,75"
+        }
+    },
+    {
+        "type": 1,
+        "sellerId": "835287305324855327",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Clara ",
+            "number": "9° B"
+        },
+        "receiver": {
+            "name": "joao vitor higino ",
+            "number": "3° B"
+        },
+        "product": {
+            "id": "bilhete",
+            "price": "1,00"
+        },
+        "message": "Eu queria sofrer um acidente grave, tipo tropeçar e cair na sua cama\nobs: anônimo "
+    },
+    {
+        "type": 1,
+        "sellerId": "723280526579990720",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Antonella ",
+            "number": "7A"
+        },
+        "receiver": {
+            "name": "Antônio ",
+            "number": "3B"
+        },
+        "product": {
+            "id": "bilhete+pirulito",
+            "price": "1,50"
+        },
+        "message": "Entrega Escandalosa\nvc é tão doce quanto essa pirulito, seu fofo "
+    },
+    {
+        "type": 1,
+        "sellerId": "835287305324855327",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Maria Paula",
+            "number": "9° B"
+        },
+        "receiver": {
+            "name": "Fernanda ",
+            "number": "9° B"
+        },
+        "product": {
+            "id": "bilhete+pirulito",
+            "price": "1,50"
+        },
+        "message": "Se a lua tivesse metade do brilho dos seus olhos as noites seriam muito mais bonitas \nobs: anônimo "
+    },
+    {
+        "type": 1,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "Pedro Henrrique",
+            "number": "8º C"
+        },
+        "receiver": {
+            "name": "Mikaely",
+            "number": "8º C"
+        },
+        "product": {
+            "id": "bilhete+bombom",
+            "price": "3,00"
+        },
+        "message": "“te amo, continue sendo essa pessoa incrível que você é”\nanônimo"
+    },
+    {
+        "type": 0,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Vitor",
+            "number": "3 A"
+        },
+        "product": {
+            "id": "pirulito",
+            "price": "0,50"
+        }
+    },
+    {
+        "type": 0,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Vitor",
+            "number": "3 A"
+        },
+        "product": {
+            "id": "bombom",
+            "price": "2,00"
+        }
+    },
+    {
+        "type": 0,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "vitor",
+            "number": "3 A"
+        },
+        "product": {
+            "id": "pirulito",
+            "price": "0,50"
+        }
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Zara",
+            "number": "3ºB"
+        },
+        "receiver": {
+            "name": "Ana Laura",
+            "number": "3ºB"
+        },
+        "product": {
+            "id": "dobradura+brigadeiro+fini",
+            "price": "6.5"
+        },
+        "message": "\"Você é encantadora, sempre que meus olhos se encontram com sua imensa beleza eu me sinto inspirada a criar uma nova arte. Seu gosto pelo terror despertou uma imensa curiosidade em te conhecer melhor, assim como sua personalidade tão divertida e espontânea.  Aproveite os doces! Que vá por mim, nenhum deles chegam aos pés de seu doce sorriso.\""
+    },
+    {
+        "type": 0,
+        "sellerId": "835287305324855327",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Mariana",
+            "number": "8° C"
+        },
+        "product": {
+            "id": "fini",
+            "price": "2,00"
+        }
+    },
+    {
+        "type": 1,
+        "sellerId": "723280526579990720",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Liliane Couto",
+            "number": "Pessoa d fora"
+        },
+        "receiver": {
+            "name": "Talita Couto",
+            "number": "Pessoa de Fora"
+        },
+        "product": {
+            "id": "direct",
+            "price": "0,25"
+        },
+        "message": "Mensagem pelo Zap 985606614 Liliane Couto"
+    },
+    {
+        "type": 1,
+        "sellerId": "723280526579990720",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Liliane Couto",
+            "number": "De fora"
+        },
+        "receiver": {
+            "name": "Talita couto",
+            "number": "de fora"
+        },
+        "product": {
+            "id": "bilhete",
+            "price": "0,75"
+        },
+        "message": "Mensagem do zap 985606613"
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Antônio",
+            "number": "3ºB"
+        },
+        "receiver": {
+            "name": "Maria Eduarda",
+            "number": "7ºA"
+        },
+        "product": {
+            "id": "bilhete+pirulito",
+            "price": "2.5"
+        },
+        "message": "A amizade é algo que começa e nunca acaba.  Obs: Anônimo + Escandaloso"
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Geovane",
+            "number": "3ºB"
+        },
+        "receiver": {
+            "name": "Paulo Henrique",
+            "number": "Professor"
+        },
+        "product": {
+            "id": "bilhete+bombom+pirulito",
+            "price": "4.5"
+        },
+        "message": "Decide aí"
+    },
+    {
+        "type": 1,
+        "sellerId": "482155160479596545",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "João Paulo Nunes da Silva",
+            "number": "3B"
+        },
+        "receiver": {
+            "name": "Livia",
+            "number": "Professora"
+        },
+        "product": {
+            "id": "bilhete+bombom",
+            "price": "4"
+        },
+        "message": "Livia, eu te amo!!! Minha prof favorita!! - Nunes"
+    },
+    {
+        "type": 0,
+        "sellerId": "482155160479596545",
+        "paymentMethod": "money",
+        "buyer": {
+            "name": "João Paulo Nunes",
+            "number": "3B"
+        },
+        "product": {
+            "id": "bombom",
+            "price": "3.5"
+        }
+    },
+    {
+        "type": 0,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Julia",
+            "number": "3º B"
+        },
+        "product": {
+            "id": "pirulito",
+            "price": "1.5"
+        }
+    },
+    {
+        "type": 1,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Julia",
+            "number": "3º B"
+        },
+        "receiver": {
+            "name": "Ingrid",
+            "number": "3º B"
+        },
+        "product": {
+            "id": "bilhete",
+            "price": "2"
+        },
+        "message": "vou armar uma barraca, no cantinho do seu lábio, quando anoitecer no céu da sua boca, eu vou entrar (escandaloso)"
+    },
+    {
+        "type": 1,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Julia",
+            "number": "3º B"
+        },
+        "receiver": {
+            "name": "Pedro",
+            "number": "3º B"
+        },
+        "product": {
+            "id": "bilhete+bombom",
+            "price": "4"
+        },
+        "message": "me chama de basilisco, e deixa eu entrar na sua câmara secreta"
+    },
+    {
+        "type": 1,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Ana Julia",
+            "number": "3º B"
+        },
+        "receiver": {
+            "name": "Ana Laura",
+            "number": "3º B"
+        },
+        "product": {
+            "id": "bilhete+pirulito",
+            "price": "2.5"
+        },
+        "message": "Nem Van Gogh poderia explicar a obra de arte que você é quando sorri"
+    },
+    {
+        "type": 1,
+        "sellerId": "674290622563352576",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Letícia",
+            "number": "3º B"
+        },
+        "receiver": {
+            "name": "Samuel",
+            "number": "3º B"
+        },
+        "product": {
+            "id": "bilhete+bombom",
+            "price": "4"
+        },
+        "message": "mensagem brega (escandalosa"
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Bianca",
+            "number": "3ºB"
+        },
+        "receiver": {
+            "name": "Murilo",
+            "number": "3ºB"
+        },
+        "product": {
+            "id": "bilhete",
+            "price": "2"
+        },
+        "message": "Seu pai trabalha na orta? Por que você fez meu pepino crescer"
+    }
+]

@@ -212,6 +212,8 @@ module.exports = class extends Command {
                         }
                     ])
                     .setFooter({ text: `Desiludidos` })
+                // Sending embed to backup channel
+                await backupChannel.send({ embeds: [ticketEmbed] })
 
                 // Edit embed details
                 minimizedTicketEmbed = ticketEmbed.toJSON()
@@ -221,8 +223,6 @@ module.exports = class extends Command {
                 const sellersChannel = getChannel(channels.sellersChannelId)
                 sellersChannel.send({ content: `<@${interaction.user.id}>`, embeds: [minimizedTicketEmbed], components: [Buttons.sellerProductSent, Buttons.sellerProductNotSent] })
 
-                // Sending embed to backup channel
-                backupChannel.send({ embeds: [ticketEmbed] })
                 interaction.reply({ embeds: [Embeds.SUCCESS('**Ticket Registrado!**')], ephemeral: true })
                 break
             case 1:
@@ -299,19 +299,19 @@ module.exports = class extends Command {
                         }
                     ])
                     .setFooter({ text: `Desiludidos` })
-
+                // Sending embed to backup channel
+                await backupChannel.send({ embeds: [ticketEmbed] })
+                
                 // Edit embed details
                 minimizedTicketEmbed = ticketEmbed.toJSON()
                 minimizedTicketEmbed.footer.text = interaction.user.id
                 minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Comprador'), 1)
                 minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
-                
+
                 // Sending modifield embed to sellers channel
                 const productionChannel = getChannel(channels.productionChannelId)
                 productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })
 
-                // Sending embed to backup channel
-                backupChannel.send({ embeds: [ticketEmbed] })
                 interaction.reply({ embeds: [Embeds.SUCCESS('**Ticket Registrado!**')], ephemeral: true })
                 break
         }
