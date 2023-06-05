@@ -298,7 +298,7 @@ module.exports = class extends Command {
                             "value": `\`${paymentDictionary[paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)]} R$${product.price}\``
                         }
                     ])
-                    .setFooter({ text: `Desiludidos` })
+                    .setFooter({ text: `Correio Elegante` })
                 // Sending embed to backup channel
                 await backupChannel.send({ embeds: [ticketEmbed] })
                 
@@ -307,7 +307,8 @@ module.exports = class extends Command {
                 minimizedTicketEmbed.footer.text = interaction.user.id
                 minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Comprador'), 1)
                 minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
-
+                minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Método de pagamento'), 1)
+                
                 // Sending modifield embed to sellers channel
                 const productionChannel = getChannel(channels.productionChannelId)
                 productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })

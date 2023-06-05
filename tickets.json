@@ -407,24 +407,6 @@
         }
     },
     {
-        "type": 1,
-        "sellerId": "437249534096048130",
-        "paymentMethod": "pix",
-        "buyer": {
-            "name": "Zara",
-            "number": "3ºB"
-        },
-        "receiver": {
-            "name": "Ana Laura",
-            "number": "3ºB"
-        },
-        "product": {
-            "id": "dobradura+brigadeiro+fini",
-            "price": "6.5"
-        },
-        "message": "\"Você é encantadora, sempre que meus olhos se encontram com sua imensa beleza eu me sinto inspirada a criar uma nova arte. Seu gosto pelo terror despertou uma imensa curiosidade em te conhecer melhor, assim como sua personalidade tão divertida e espontânea.  Aproveite os doces! Que vá por mim, nenhum deles chegam aos pés de seu doce sorriso.\""
-    },
-    {
         "type": 0,
         "sellerId": "835287305324855327",
         "paymentMethod": "pix",
@@ -642,5 +624,41 @@
             "price": "2"
         },
         "message": "Seu pai trabalha na orta? Por que você fez meu pepino crescer"
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Zara",
+            "number": "3ºB"
+        },
+        "receiver": {
+            "name": "Mariana Alves",
+            "number": "3ºB"
+        },
+        "product": {
+            "id": "dobradura+brigadeiro+fini",
+            "price": "6.5"
+        },
+        "message": "Você é muito incrível, viu? Nunca deixe ninguém te dizer o contrario, sempre te achei muito divertida e fantástica em todos os sentidos. Espero que você goste do correio-elegante, mandei com carinho! Obs: anônimo e escandaloso"
+    },
+    {
+        "type": 1,
+        "sellerId": "437249534096048130",
+        "paymentMethod": "pix",
+        "buyer": {
+            "name": "Zara",
+            "number": "3ºB"
+        },
+        "receiver": {
+            "name": "Ana Laura",
+            "number": "3ºB"
+        },
+        "product": {
+            "id": "dobradura+brigadeiro+fini",
+            "price": "6.5"
+        },
+        "message": "Você é encantadora, sempre que meus olhos se encontram com sua imensa beleza eu me sinto inspirada a criar uma nova arte. Seu gosto pelo terror despertou uma imensa curiosidade em te conhecer melhor, assim como sua personalidade tão divertida e espontânea.  Aproveite os doces! Que vá por mim, nenhum deles chegam aos pés de seu doce sorriso. Obs: anônimo e escandaloso"
     }
 ]
