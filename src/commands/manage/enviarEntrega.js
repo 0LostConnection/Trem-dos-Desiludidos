@@ -90,7 +90,7 @@ module.exports = class extends Command {
                     inline: true
                 },
             ])
-            .setFooter({ text: loja })
+            .setFooter({ text: String(loja) })
 
         if (message) ticket.addFields([{ name: 'Mensagem + Observações', value: `\`${message}\`` }])
         productionChannel.send({ content: '<@&1114199498986618881>', embeds: [ticket], components: [Buttons.productSent] })
