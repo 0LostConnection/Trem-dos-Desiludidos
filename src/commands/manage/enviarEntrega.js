@@ -59,6 +59,11 @@ module.exports = class extends Command {
         })
     }
     run = (interaction) => {
+        const storeDictionary = {
+            0: 'Desiludidos',
+            1: 'Correio Elegante'
+        }
+
         // Functions
         const getChannel = (channelId) => { return interaction.guild.channels.cache.get(channelId) }
 
@@ -69,7 +74,7 @@ module.exports = class extends Command {
             number: interaction.options.getString('série-destinatário')
         }
         const message = interaction.options.getString('mensagem')
-        const productionChannel = getChannel(channels.productionChannelId)
+        const shippingChannel = getChannel(channels.shippingChannelId)
 
         const ticket = new EmbedBuilder()
             .setColor(Colors.clear.Yellow)
@@ -90,11 +95,11 @@ module.exports = class extends Command {
                     inline: true
                 },
             ])
-            .setFooter({ text: String(loja) })
+            .setFooter({ text: storeDictionary[loja] })
 
         if (message) ticket.addFields([{ name: 'Mensagem + Observações', value: `\`${message}\`` }])
-        productionChannel.send({ content: '<@&1114199498986618881>', embeds: [ticket], components: [Buttons.productSent] })
+        shippingChannel.send({ content: '<@&1114199498986618881>', embeds: [ticket], components: [Buttons.productSent] })
 
-        interaction.reply({ embeds: [Embeds.SUCCESS('Ticket enviado para o canal de envio!')], ephemeral: true})
+        interaction.reply({ embeds: [Embeds.SUCCESS('**Ticket enviado para o canal de envio!**')], ephemeral: true })
     }
 }
