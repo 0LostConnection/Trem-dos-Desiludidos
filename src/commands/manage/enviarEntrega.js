@@ -69,7 +69,7 @@ module.exports = class extends Command {
             number: interaction.options.getString('série-destinatário')
         }
         const message = interaction.options.getString('mensagem')
-        const shippingChannel = getChannel(channels.shippingChannelId)
+        const productionChannel = getChannel(channels.productionChannelId)
 
         const ticket = new EmbedBuilder()
             .setColor(Colors.clear.Yellow)
@@ -90,10 +90,11 @@ module.exports = class extends Command {
                     inline: true
                 },
             ])
+            .setFooter({ text: loja })
 
         if (message) ticket.addFields([{ name: 'Mensagem + Observações', value: `\`${message}\`` }])
-        shippingChannel.send({ content: '<@&1114199498986618881>', embeds: [ticket], components: [Buttons.productSent] })
+        productionChannel.send({ content: '<@&1114199498986618881>', embeds: [ticket], components: [Buttons.productSent] })
 
-        interaction.reply({ embeds: [Embeds.SUCCESS('Ticket enviado para o canal de envio!')]})
+        interaction.reply({ embeds: [Embeds.SUCCESS('Ticket enviado para o canal de envio!')], ephemeral: true})
     }
 }

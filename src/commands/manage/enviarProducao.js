@@ -90,10 +90,12 @@ module.exports = class extends Command {
                     inline: true
                 },
             ])
+            .setFooter({ text: loja })
+
 
         if (message) ticket.addFields([{ name: 'Mensagem + Observações', value: `\`${message}\`` }])
         shippingChannel.send({ content: '<@&1114199498986618881>', embeds: [ticket], components: [Buttons.productDone] })
 
-        interaction.reply({ embeds: [Embeds.SUCCESS('Ticket enviado para o canal de produção!')]})
+        interaction.reply({ embeds: [Embeds.SUCCESS('Ticket enviado para o canal de produção!')], ephemeral: true })
     }
 }
