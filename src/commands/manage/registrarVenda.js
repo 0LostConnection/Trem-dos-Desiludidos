@@ -147,7 +147,7 @@ module.exports = class extends Command {
         const productType = typeDictionary[interaction.options.getSubcommand()]
         const product = {
             id: interaction.options.getString('produto'),
-            price: interaction.options.getNumber('preço')
+            price: interaction.options.getNumber('preço').replace(',', '.')
         }
         const paymentMethod = interaction.options.getString('método-pagamento')
         const buyer = {
