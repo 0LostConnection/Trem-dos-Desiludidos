@@ -2,6 +2,11 @@ const { Client, Collection } = require('discord.js')
 const { readdirSync } = require('fs')
 const { join } = require('path')
 
+/**
+ * Classe personalizada que estende o cliente do Discord.js para gerenciar comandos e eventos.
+ * @class
+ * @extends Client
+ */
 module.exports = class extends Client {
     constructor(options) {
         super(options)

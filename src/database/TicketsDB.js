@@ -1,19 +1,20 @@
 const Database = require('./Database')
 
+/**
+ * Classe que representa uma conexão com o banco de dados.
+ * @class
+ * @constructor Cria uma nova conexão com o banco de dados
+ * @augments Database
+ */
 module.exports = class extends Database {
     constructor() {
         super(process.env.DATABASE_SECRET)
     }
 
-    /*  async adicionarTicket(data) {
-         const tickets = require('./models/Ticket')
-         const connection = await super.connect()
-         const database = { connection, tickets }
-         const ticket =  new database.tickets(data)
-         await ticket.save()
-         await super.disconnect()
-     } */
-
+    /**
+     * Adiciona um ticket ao banco de dados.
+     * @param {Object} data 
+     */
     async adicionarTicket(data) {
         const tickets = require('./models/Ticket')
         const connection = await super.connect()
@@ -28,7 +29,11 @@ module.exports = class extends Database {
             }
         })
     }
-
+    
+    /**
+     * Obtêm todos os tickets no banco de dados e retorna em forma de Array
+     * @returns {Array} Array contendo objetos
+     */
     async obterTickets() {
         const tickets = require('./models/Ticket')
         const connection = await super.connect()
