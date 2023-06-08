@@ -7,11 +7,11 @@ module.exports = {
     // TDD
     productsTypes: ['produtos:desiludidos', 'produtos:correio'],
     channels: {
-        sellersChannelId: '1114185974893793371',
-        productionChannelId: '1110666022215761940',
-        shippingChannelId: '1114177722692939859',
-        backupChannelId: '1110693082237763714',
-        shippedProductsChannelId: '1114189422888488960'
+        sellersChannelId: '1116172222608977940',
+        productionChannelId: '1116171780260892834',
+        shippingChannelId: '1116171839312515194',
+        backupChannelId: '1116171656310837328',
+        shippedProductsChannelId: '1116171634282332280'
     },
 
     statusArray: [

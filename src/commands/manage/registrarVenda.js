@@ -94,7 +94,7 @@ module.exports = class extends Command {
                             ]
                         },
                         {
-                            type: 10,
+                            type: 3,
                             name: 'preço',
                             description: 'O preço do produto em R$ - Utilize pontos ao invés de vírgula!',
                             required: true
@@ -147,14 +147,17 @@ module.exports = class extends Command {
         const productType = typeDictionary[interaction.options.getSubcommand()]
         const product = {
             id: interaction.options.getString('produto'),
-            price: String(interaction.options.getNumber('preço')).replace(',', '.')
+            price: Number(interaction.options.getString('preço').replace(',', '.'))
         }
+
+        if (isNaN(product.price)) return interaction.reply({ embeds: [Embeds.ERROR('**O `preço` precisa ser um número!**')], ephemeral: true })
+
         const paymentMethod = interaction.options.getString('método-pagamento')
         const buyer = {
             name: interaction.options.getString('comprador'),
             number: interaction.options.getString('série-comprador')
         }
-
+        
         // Channels
         const backupChannel = getChannel(channels.backupChannelId)
 
@@ -301,14 +304,14 @@ module.exports = class extends Command {
                     .setFooter({ text: `Correio Elegante` })
                 // Sending embed to backup channel
                 await backupChannel.send({ embeds: [ticketEmbed] })
-                
+
                 // Edit embed details
                 minimizedTicketEmbed = ticketEmbed.toJSON()
                 minimizedTicketEmbed.footer.text = interaction.user.id
                 minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Comprador'), 1)
                 minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
                 minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Método de pagamento'), 1)
-                
+
                 // Sending modifield embed to sellers channel
                 const productionChannel = getChannel(channels.productionChannelId)
                 productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })
