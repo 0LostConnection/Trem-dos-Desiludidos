@@ -9,8 +9,8 @@
                 "description": "Pirulito",
                 "id": "pirulito",
                 "price": {
-                    "money": "0,75",
-                    "pix": "0,75"
+                    "money": "0,50",
+                    "pix": "0,50"
                 }
             },
             {
@@ -38,6 +38,16 @@
                 "emoji": "🍫",
                 "description": "Brigadeiro",
                 "id": "brigadeiro",
+                "price": {
+                    "money": "2,50",
+                    "pix": "2,50"
+                }
+            },
+            {
+                "name": "Prazer Gourmet",
+                "emoji": "🍫",
+                "description": "Brigadeiro Especial",
+                "id": "brigadeiroPlus",
                 "price": {
                     "money": "3,00",
                     "pix": "3,00"
@@ -90,13 +100,23 @@
                 }
             },
             {
+                "name": "Amor Embalado",
+                "emoji": "😍",
+                "description": "Bilhete + Fini",
+                "id": "bilhete+fini",
+                "price": {
+                    "money": "3,00",
+                    "pix": "3,00"
+                }
+            },
+            {
                 "name": "Amor Completo",
                 "emoji": "💘",
                 "description": "Bilhete + Bombom + Pirulito",
                 "id": "bilhete+bombom+pirulito",
                 "price": {
-                    "money": "3,75",
-                    "pix": "3,75"
+                    "money": "3,50",
+                    "pix": "3,50"
                 }
             },
             {
@@ -105,8 +125,8 @@
                 "description": "Bilhete + Brigadeiro",
                 "id": "bilhete+brigadeiro",
                 "price": {
-                    "money": "3,50",
-                    "pix": "3,50"
+                    "money": "3,00",
+                    "pix": "3,00"
                 }
             },
             {
@@ -124,6 +144,36 @@
                 "emoji": "🥰",
                 "description": "Dobradura + Brigadeiro + Fini",
                 "id": "dobradura+brigadeiro+fini",
+                "price": {
+                    "money": "5,00",
+                    "pix": "5,00"
+                }
+            },
+            {
+                "name": "Afeto em sabor",
+                "emoji": "😋",
+                "description": "Bilhete + Brigadeiro Especial",
+                "id": "bilhete+brigadeiroPlus",
+                "price": {
+                    "money": "3,50",
+                    "pix": "3,50"
+                }
+            },
+            {
+                "name": "Delícias do Coração",
+                "emoji": "🍫",
+                "description": "Bilhete + Brigadeiro Expecial + Pirulito",
+                "id": "bilhete+brigadeiroPlus+pirulito",
+                "price": {
+                    "money": "4,50",
+                    "pix": "4,50"
+                }
+            },
+            {
+                "name": "Doce Beleza",
+                "emoji": "🥰",
+                "description": "Dobradura + Brigadeiro Especial + Fini",
+                "id": "dobradura+brigadeiroPlus+fini",
                 "price": {
                     "money": "5,50",
                     "pix": "5,50"
