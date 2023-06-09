@@ -45,7 +45,7 @@
             },
             {
                 "name": "Prazer Gourmet",
-                "emoji": "🍫",
+                "emoji": "🫦",
                 "description": "Brigadeiro Especial",
                 "id": "brigadeiroPlus",
                 "price": {
@@ -100,8 +100,8 @@
                 }
             },
             {
-                "name": "Amor Embalado",
-                "emoji": "😍",
+                "name": "Beijo Doce",
+                "emoji": "💋",
                 "description": "Bilhete + Fini",
                 "id": "bilhete+fini",
                 "price": {
@@ -150,8 +150,8 @@
                 }
             },
             {
-                "name": "Afeto em sabor",
-                "emoji": "😋",
+                "name": "Afeto em Sabor",
+                "emoji": "🫦",
                 "description": "Bilhete + Brigadeiro Especial",
                 "id": "bilhete+brigadeiroPlus",
                 "price": {
@@ -161,7 +161,7 @@
             },
             {
                 "name": "Delícias do Coração",
-                "emoji": "🍫",
+                "emoji": "💝",
                 "description": "Bilhete + Brigadeiro Expecial + Pirulito",
                 "id": "bilhete+brigadeiroPlus+pirulito",
                 "price": {
@@ -171,7 +171,7 @@
             },
             {
                 "name": "Doce Beleza",
-                "emoji": "🥰",
+                "emoji": "✨",
                 "description": "Dobradura + Brigadeiro Especial + Fini",
                 "id": "dobradura+brigadeiroPlus+fini",
                 "price": {
