@@ -27,6 +27,7 @@ module.exports = class extends eventStructure {
             'money': 'Dinheiro',
             'pix': 'Pix'
         }
+        
         switch (interaction.customId) {
             case 'pagamento:desiludidos':
                 const desiludidosRow = new ActionRowBuilder()

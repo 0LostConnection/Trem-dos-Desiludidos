@@ -11,8 +11,10 @@ module.exports = {
         productionChannelId: '1110666022215761940',
         shippingChannelId: '1114177722692939859',
         backupChannelId: '1110693082237763714',
-        shippedProductsChannelId: '1114189422888488960'
+        shippedProductsChannelId: '1114189422888488960',
+        logChannelId: '1117926278369120347'
     },
+    
 
     statusArray: [
         {

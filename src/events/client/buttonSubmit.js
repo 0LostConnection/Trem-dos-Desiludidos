@@ -16,21 +16,19 @@ module.exports = class extends eventStructure {
 
         const shippedProductsChannel = getChannel(channels.shippedProductsChannelId)
         const productionChannel = getChannel(channels.productionChannelId)
+        const logChannel = getChannel(channels.logChannelId)
+        const shippingChannel = getChannel(channels.shippingChannelId)
+
+        let ticketEmbed = interaction.message.embeds[0]
         let sellerId
+
         switch (interaction.customId) {
             case 'delete':
                 interaction.message.delete()
                 break
             case 'product:done':
-                const shippingChannel = getChannel(channels.shippingChannelId)
-
-                let minimizedTicketEmbed = interaction.message.embeds[0]
-                /*if (interaction.message.embeds[0].color === 15895712) {
-                    minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Comprador'), 1)
-                    minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
-                }*/
-                
-                shippingChannel.send({ content: '<@&1114199498986618881>', embeds: [minimizedTicketEmbed], components: [Buttons.productSent] })
+                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:**${interaction.user}\n**Para:** ${shippingChannel}\n`, embeds: [ticketEmbed] })
+                shippingChannel.send({ content: '<@&1114199498986618881>', embeds: [ticketEmbed], components: [Buttons.productSent] })
 
                 try {
                     interaction.message.delete()
@@ -39,6 +37,7 @@ module.exports = class extends eventStructure {
                 }
                 break
             case 'product:sent':
+                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:**${interaction.user}\n**Para:** ${shippedProductsChannel}\n`, embeds: [ticketEmbed] })
                 shippedProductsChannel.send({ embeds: interaction.message.embeds })
 
                 try {
@@ -51,7 +50,8 @@ module.exports = class extends eventStructure {
                 sellerId = interaction.message.embeds[0].footer.text
 
                 if (interaction.user.id !== sellerId) return interaction.reply({ embeds: [Embeds.INFO(`**Você não é o vendedor que registrou esse ticket!**`)], ephemeral: true })
-
+                
+                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:**${interaction.user}\n**Para:** ${shippedProductsChannel}\n`, embeds: [ticketEmbed] })
                 shippedProductsChannel.send({ embeds: interaction.message.embeds })
 
                 try {
@@ -65,6 +65,7 @@ module.exports = class extends eventStructure {
 
                 if (interaction.user.id !== sellerId) return interaction.reply({ embeds: [Embeds.INFO(`**Você não é o vendedor que registrou esse ticket!**`)], ephemeral: true })
 
+                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:**${interaction.user}\n**Para:** ${productionChannel}\n`, embeds: [ticketEmbed] })
                 productionChannel.send({ content: '<@&1114199414546907157>', embeds: interaction.message.embeds, components: [Buttons.productDone] })
 
                 try {
