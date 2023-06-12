@@ -23,12 +23,17 @@ module.exports = class extends eventStructure {
 
         const metodoPagamento = String(interaction.values[0].replace('pagamento:', ''))
 
+        const paymentDictionary = {
+            'money': 'Dinheiro',
+            'pix': 'Pix'
+        }
+        console.log(metodoPagamento)
         switch (interaction.customId) {
             case 'pagamento:desiludidos':
                 const desiludidosRow = new ActionRowBuilder()
                     .addComponents(selectMenuOptions.desiludidosSelectMenu)
                 const desiludidosEmbed = new EmbedBuilder()
-                    .setTitle(metodoPagamento.charAt(0).toUpperCase() + metodoPagamento.slice(1))
+                    .setTitle(paymentDictionary[metodoPagamento])
                     .setImage('https://i.imgur.com/cJgr8ci.png')
                     .setColor(Colors.dark.Purple)
 
@@ -38,7 +43,7 @@ module.exports = class extends eventStructure {
                 const correioRow = new ActionRowBuilder()
                     .addComponents(selectMenuOptions.correioSelectMenu)
                 const correioEmbed = new EmbedBuilder()
-                    .setTitle(metodoPagamento.charAt(0).toUpperCase() + metodoPagamento.slice(1))
+                    .setTitle(paymentDictionary[metodoPagamento])
                     .setImage('https://i.imgur.com/VRtGv6S.png')
                     .setColor(Colors.custom.Love)
 
