@@ -27,7 +27,7 @@ module.exports = class extends eventStructure {
                 interaction.message.delete()
                 break
             case 'product:done':
-                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:**${interaction.user}\n**Para:** ${shippingChannel}\n`, embeds: [ticketEmbed] })
+                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:** ${interaction.user}\n**Para:** ${shippingChannel}\n`, embeds: [ticketEmbed] })
                 shippingChannel.send({ content: '<@&1114199498986618881>', embeds: [ticketEmbed], components: [Buttons.productSent] })
 
                 try {
@@ -37,7 +37,7 @@ module.exports = class extends eventStructure {
                 }
                 break
             case 'product:sent':
-                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:**${interaction.user}\n**Para:** ${shippedProductsChannel}\n`, embeds: [ticketEmbed] })
+                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:** ${interaction.user}\n**Para:** ${shippedProductsChannel}\n`, embeds: [ticketEmbed] })
                 shippedProductsChannel.send({ embeds: interaction.message.embeds })
 
                 try {
@@ -51,7 +51,7 @@ module.exports = class extends eventStructure {
 
                 if (interaction.user.id !== sellerId) return interaction.reply({ embeds: [Embeds.INFO(`**Você não é o vendedor que registrou esse ticket!**`)], ephemeral: true })
                 
-                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:**${interaction.user}\n**Para:** ${shippedProductsChannel}\n`, embeds: [ticketEmbed] })
+                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:** ${interaction.user}\n**Para:** ${shippedProductsChannel}\n`, embeds: [ticketEmbed] })
                 shippedProductsChannel.send({ embeds: interaction.message.embeds })
 
                 try {
@@ -65,7 +65,7 @@ module.exports = class extends eventStructure {
 
                 if (interaction.user.id !== sellerId) return interaction.reply({ embeds: [Embeds.INFO(`**Você não é o vendedor que registrou esse ticket!**`)], ephemeral: true })
 
-                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:**${interaction.user}\n**Para:** ${productionChannel}\n`, embeds: [ticketEmbed] })
+                logChannel.send({ content: `**Ação:** \`Botão\`\n**Por:** ${interaction.user}\n**Para:** ${productionChannel}\n`, embeds: [ticketEmbed] })
                 productionChannel.send({ content: '<@&1114199414546907157>', embeds: interaction.message.embeds, components: [Buttons.productDone] })
 
                 try {
