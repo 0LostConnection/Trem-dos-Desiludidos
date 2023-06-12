@@ -109,7 +109,7 @@ module.exports = class ProcessTicketData {
                             }
                         ])
                         .setFooter({ text: `Desiludidos` })
-                    await backupChannel.send({ embeds: [ticketEmbed] })
+                        await backupChannel.send({ embeds: [ticketEmbed] })
                     minimizedTicketEmbed = ticketEmbed.toJSON()
                     minimizedTicketEmbed.footer.text = interaction.user.id
 
