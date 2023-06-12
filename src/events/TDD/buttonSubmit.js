@@ -12,6 +12,7 @@ module.exports = class extends eventStructure {
     run = async (interaction) => {
         if (!interaction.isButton()) return
 
+        let minimizedTicketEmbed = interaction.message.embeds[0]
         const getChannel = (channelId) => { return interaction.guild.channels.cache.get(channelId) }
 
         const shippedProductsChannel = getChannel(channels.shippedProductsChannelId)
@@ -24,12 +25,8 @@ module.exports = class extends eventStructure {
             case 'product:done':
                 const shippingChannel = getChannel(channels.shippingChannelId)
 
-                let minimizedTicketEmbed = interaction.message.embeds[0]
-                /*if (interaction.message.embeds[0].color === 15895712) {
-                    minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Comprador'), 1)
-                    minimizedTicketEmbed.fields.splice(minimizedTicketEmbed.fields.findIndex(field => field.name == 'Série do Comprador'), 1)
-                }*/
-                
+                minimizedTicketEmbed.title = 'Ticket de Envio'
+
                 shippingChannel.send({ content: '<@&1114199498986618881>', embeds: [minimizedTicketEmbed], components: [Buttons.productSent] })
 
                 try {
@@ -65,7 +62,9 @@ module.exports = class extends eventStructure {
 
                 if (interaction.user.id !== sellerId) return interaction.reply({ embeds: [Embeds.INFO(`**Você não é o vendedor que registrou esse ticket!**`)], ephemeral: true })
 
-                productionChannel.send({ content: '<@&1114199414546907157>', embeds: interaction.message.embeds, components: [Buttons.productDone] })
+                minimizedTicketEmbed.title = 'Ticket de Produção'
+
+                productionChannel.send({ content: '<@&1114199414546907157>', embeds: [minimizedTicketEmbed], components: [Buttons.productDone] })
 
                 try {
                     interaction.message.delete()
