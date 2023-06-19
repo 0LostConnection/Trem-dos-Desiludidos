@@ -1,6 +1,9 @@
 const eventStructure = require(`../../infra/structures/EventStructure`)
-const { ModalBuilder, TextInputStyle} = require('discord.js');
+const { ModalBuilder, TextInputStyle } = require('discord.js');
 const createModalComponent = require('../../infra/utils/createModalComponent')
+const { Embeds } = require('../../../config')
+const ProcessTicketData = require('../../infra/utils/ProcessTicketData')
+const { enviarTicket, registrarTicket } = new ProcessTicketData()
 
 module.exports = class extends eventStructure {
     constructor(client) {
@@ -51,24 +54,15 @@ module.exports = class extends eventStructure {
                 interaction.showModal(ticketVendaCorreio)
                 break
             case 'produtos:desiludidos':
-                const ticketVendaDesiludido = new ModalBuilder()
-                    .setCustomId(interaction.values.join('+'))
-                    .setTitle('Ticket de Registro de Venda')
+                const paymentDictionary = {
+                    'dinheiro': 'money',
+                    'pix': 'pix'
+                }
+                const paymentMethod = String(interaction.message.embeds[0].title)
+                interaction.update({ embeds: [Embeds.SUCCESS('**Ticket Registrado!**')], components: [] })
 
-                ticketVendaDesiludido.addComponents(
-                    createModalComponent({
-                        customId: 'comprador',
-                        required: true,
-                        label: 'Comprador'
-                    }),
-                    createModalComponent({
-                        customId: 'comprador:serie',
-                        required: true,
-                        label: 'Série do Comprador'
-                    })
-                )
-
-                interaction.showModal(ticketVendaDesiludido)
+                enviarTicket(interaction, { ticketType: 0, paymentMethod: paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1) })
+                registrarTicket(interaction, { ticketType: 0, paymentMethod: paymentDictionary[paymentMethod.charAt(0).toLowerCase() + paymentMethod.slice(1)] })
                 break
         }
 

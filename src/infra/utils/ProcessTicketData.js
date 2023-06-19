@@ -17,17 +17,13 @@ module.exports = class ProcessTicketData {
 
         switch (ticketType) {
             case 0:
-                const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
+                const productsArray = interaction.values
                 for (const product of productsArray) {
                     ticketsArray.push(
                         {
                             type: ticketType,
                             sellerId: interaction.user.id,
                             paymentMethod: paymentMethod,
-                            buyer: {
-                                name: interaction.fields.getTextInputValue('comprador'),
-                                number: interaction.fields.getTextInputValue('comprador:serie')
-                            },
                             product: {
                                 id: product,
                                 price: productsDB.obterPreco(product, 0)[paymentMethod]
@@ -79,7 +75,7 @@ module.exports = class ProcessTicketData {
         let minimizedTicketEmbed
         switch (ticketType) {
             case 0:
-                const productsArray = interaction.customId.replace(/\+/g, ' ').split(' ')
+                const productsArray = interaction.values
                 for (const product of productsArray) {
                     ticketEmbed = new EmbedBuilder()
                         .setColor(Colors.dark.Purple)
@@ -88,16 +84,6 @@ module.exports = class ProcessTicketData {
                             {
                                 "name": "Vendedor",
                                 "value": `\`${vendedorDB.obterVendedor(interaction.user.id)?.name || interaction.user.username}\``
-                            },
-                            {
-                                "name": "Comprador",
-                                "value": `\`${interaction.fields.getTextInputValue('comprador')}\``,
-                                "inline": true
-                            },
-                            {
-                                "name": "Série do Comprador",
-                                "value": `\`${interaction.fields.getTextInputValue('comprador:serie')}\``,
-                                "inline": true
                             },
                             {
                                 "name": "Produto",
@@ -109,7 +95,7 @@ module.exports = class ProcessTicketData {
                             }
                         ])
                         .setFooter({ text: `Desiludidos` })
-                        await backupChannel.send({ embeds: [ticketEmbed] })
+                    await backupChannel.send({ embeds: [ticketEmbed] })
                     minimizedTicketEmbed = ticketEmbed.toJSON()
                     minimizedTicketEmbed.footer.text = interaction.user.id
 

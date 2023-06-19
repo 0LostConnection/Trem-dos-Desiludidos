@@ -50,18 +50,6 @@ module.exports = class extends Command {
                             name: 'preço',
                             description: 'O preço do produto em R$ - Utilize pontos ao invés de vírgula!',
                             required: true
-                        },
-                        {
-                            type: 3,
-                            name: 'comprador',
-                            description: 'Comprador do produto',
-                            required: true
-                        },
-                        {
-                            type: 3,
-                            name: 'série-comprador',
-                            description: 'Série do comprador',
-                            required: true
                         }
                     ]
                 },
@@ -171,10 +159,6 @@ module.exports = class extends Command {
                         type: productType,
                         sellerId: interaction.user.id,
                         paymentMethod: paymentMethod,
-                        buyer: {
-                            name: buyer.name,
-                            number: buyer.number
-                        },
                         product: {
                             id: product.id,
                             price: String(product.price)
@@ -191,16 +175,6 @@ module.exports = class extends Command {
                         {
                             "name": "Vendedor",
                             "value": `\`${vendedorDB.obterVendedor(interaction.user.id)?.name || interaction.user.username}\``
-                        },
-                        {
-                            "name": "Comprador",
-                            "value": `\`${buyer.name}\``,
-                            "inline": true
-                        },
-                        {
-                            "name": "Série do Comprador",
-                            "value": `\`${buyer.number}\``,
-                            "inline": true
                         },
                         {
                             "name": "Produto",
